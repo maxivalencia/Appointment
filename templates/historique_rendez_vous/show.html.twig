@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HistoriqueRendezVous{% endblock %}
+
+{% block body %}
+    <h1>HistoriqueRendezVous</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historique_rendez_vou.id }}</td>
+            </tr>
+            <tr>
+                <th>RendezVous</th>
+                <td>{{ historique_rendez_vou.rendezVous }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_historique_rendez_vous_index') }}">back to list</a>
+
+    <a href="{{ path('app_historique_rendez_vous_edit', {'id': historique_rendez_vou.id}) }}">edit</a>
+
+    {{ include('historique_rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

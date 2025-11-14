@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RendezVous index{% endblock %}
+
+{% block body %}
+    <h1>RendezVous index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Immatriculation</th>
+                <th>Proprietaire</th>
+                <th>Contact</th>
+                <th>Mail</th>
+                <th>Adresse</th>
+                <th>DatePriseRendezVous</th>
+                <th>DateRendezVous</th>
+                <th>HeureRendezVous</th>
+                <th>Confirmation</th>
+                <th>DateHeureArriveRendezVous</th>
+                <th>DateHeureFinVisite</th>
+                <th>DateHeureDebutVisite</th>
+                <th>AnnulationRendezVous</th>
+                <th>DateHeureAnnulationRendezVous</th>
+                <th>CodeRendezVous</th>
+                <th>DateModificationRendezVous</th>
+                <th>DateOrigineRendezVous</th>
+                <th>NombreModification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendez_vou in rendez_vouses %}
+            <tr>
+                <td>{{ rendez_vou.id }}</td>
+                <td>{{ rendez_vou.immatriculation }}</td>
+                <td>{{ rendez_vou.proprietaire }}</td>
+                <td>{{ rendez_vou.contact }}</td>
+                <td>{{ rendez_vou.mail }}</td>
+                <td>{{ rendez_vou.adresse }}</td>
+                <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|date('Y-m-d') : '' }}</td>
+                <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.confirmation ? 'Yes' : 'No' }}</td>
+                <td>{{ rendez_vou.dateHeureArriveRendezVous ? rendez_vou.dateHeureArriveRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateHeureFinVisite ? rendez_vou.dateHeureFinVisite|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateHeureDebutVisite ? rendez_vou.dateHeureDebutVisite|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.annulationRendezVous ? 'Yes' : 'No' }}</td>
+                <td>{{ rendez_vou.dateHeureAnnulationRendezVous ? rendez_vou.dateHeureAnnulationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.codeRendezVous }}</td>
+                <td>{{ rendez_vou.dateModificationRendezVous ? rendez_vou.dateModificationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.nombreModification }}</td>
+                <td>
+                    <a href="{{ path('app_rendez_vous_show', {'id': rendez_vou.id}) }}">show</a>
+                    <a href="{{ path('app_rendez_vous_edit', {'id': rendez_vou.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rendez_vous_new') }}">Create new</a>
+{% endblock %}

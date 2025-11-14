@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New NombreModificationMaximum{% endblock %}
+
+{% block body %}
+    <h1>Create new NombreModificationMaximum</h1>
+
+    {{ include('nombre_modification_maximum/_form.html.twig') }}
+
+    <a href="{{ path('app_nombre_modification_maximum_index') }}">back to list</a>
+{% endblock %}

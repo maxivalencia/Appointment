@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NombreVehiculeMaximumRendezVous{% endblock %}
+
+{% block body %}
+    <h1>NombreVehiculeMaximumRendezVous</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nombre_vehicule_maximum_rendez_vou.id }}</td>
+            </tr>
+            <tr>
+                <th>NombreVehicule</th>
+                <td>{{ nombre_vehicule_maximum_rendez_vou.nombreVehicule }}</td>
+            </tr>
+            <tr>
+                <th>DateApplication</th>
+                <td>{{ nombre_vehicule_maximum_rendez_vou.dateApplication ? nombre_vehicule_maximum_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_index') }}">back to list</a>
+
+    <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_edit', {'id': nombre_vehicule_maximum_rendez_vou.id}) }}">edit</a>
+
+    {{ include('nombre_vehicule_maximum_rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

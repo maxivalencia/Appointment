@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New NombreVehiculeMaximumRendezVous{% endblock %}
+
+{% block body %}
+    <h1>Create new NombreVehiculeMaximumRendezVous</h1>
+
+    {{ include('nombre_vehicule_maximum_rendez_vous/_form.html.twig') }}
+
+    <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_index') }}">back to list</a>
+{% endblock %}

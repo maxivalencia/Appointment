@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RendezVous{% endblock %}
+
+{% block body %}
+    <h1>RendezVous</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rendez_vou.id }}</td>
+            </tr>
+            <tr>
+                <th>Immatriculation</th>
+                <td>{{ rendez_vou.immatriculation }}</td>
+            </tr>
+            <tr>
+                <th>Proprietaire</th>
+                <td>{{ rendez_vou.proprietaire }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ rendez_vou.contact }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ rendez_vou.mail }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ rendez_vou.adresse }}</td>
+            </tr>
+            <tr>
+                <th>DatePriseRendezVous</th>
+                <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateRendezVous</th>
+                <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureRendezVous</th>
+                <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Confirmation</th>
+                <td>{{ rendez_vou.confirmation ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateHeureArriveRendezVous</th>
+                <td>{{ rendez_vou.dateHeureArriveRendezVous ? rendez_vou.dateHeureArriveRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateHeureFinVisite</th>
+                <td>{{ rendez_vou.dateHeureFinVisite ? rendez_vou.dateHeureFinVisite|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateHeureDebutVisite</th>
+                <td>{{ rendez_vou.dateHeureDebutVisite ? rendez_vou.dateHeureDebutVisite|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AnnulationRendezVous</th>
+                <td>{{ rendez_vou.annulationRendezVous ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateHeureAnnulationRendezVous</th>
+                <td>{{ rendez_vou.dateHeureAnnulationRendezVous ? rendez_vou.dateHeureAnnulationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CodeRendezVous</th>
+                <td>{{ rendez_vou.codeRendezVous }}</td>
+            </tr>
+            <tr>
+                <th>DateModificationRendezVous</th>
+                <td>{{ rendez_vou.dateModificationRendezVous ? rendez_vou.dateModificationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateOrigineRendezVous</th>
+                <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NombreModification</th>
+                <td>{{ rendez_vou.nombreModification }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rendez_vous_index') }}">back to list</a>
+
+    <a href="{{ path('app_rendez_vous_edit', {'id': rendez_vou.id}) }}">edit</a>
+
+    {{ include('rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

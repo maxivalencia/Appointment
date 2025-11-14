@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit NombreRendezVousParHeure{% endblock %}
+
+{% block body %}
+    <h1>Edit NombreRendezVousParHeure</h1>
+
+    {{ include('nombre_rendez_vous_par_heure/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">back to list</a>
+
+    {{ include('nombre_rendez_vous_par_heure/_delete_form.html.twig') }}
+{% endblock %}

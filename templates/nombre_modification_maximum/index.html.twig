@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NombreModificationMaximum index{% endblock %}
+
+{% block body %}
+    <h1>NombreModificationMaximum index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreModification</th>
+                <th>DateApplication</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nombre_modification_maximum in nombre_modification_maximums %}
+            <tr>
+                <td>{{ nombre_modification_maximum.id }}</td>
+                <td>{{ nombre_modification_maximum.nombreModification }}</td>
+                <td>{{ nombre_modification_maximum.dateApplication ? nombre_modification_maximum.dateApplication|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_nombre_modification_maximum_show', {'id': nombre_modification_maximum.id}) }}">show</a>
+                    <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nombre_modification_maximum_new') }}">Create new</a>
+{% endblock %}

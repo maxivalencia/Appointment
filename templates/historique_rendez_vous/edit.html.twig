@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit HistoriqueRendezVous{% endblock %}
+
+{% block body %}
+    <h1>Edit HistoriqueRendezVous</h1>
+
+    {{ include('historique_rendez_vous/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_historique_rendez_vous_index') }}">back to list</a>
+
+    {{ include('historique_rendez_vous/_delete_form.html.twig') }}
+{% endblock %}

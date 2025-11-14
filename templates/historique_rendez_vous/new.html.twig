@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New HistoriqueRendezVous{% endblock %}
+
+{% block body %}
+    <h1>Create new HistoriqueRendezVous</h1>
+
+    {{ include('historique_rendez_vous/_form.html.twig') }}
+
+    <a href="{{ path('app_historique_rendez_vous_index') }}">back to list</a>
+{% endblock %}

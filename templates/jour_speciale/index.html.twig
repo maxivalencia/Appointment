@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}JourSpeciale index{% endblock %}
+
+{% block body %}
+    <h1>JourSpeciale index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateSpeciale</th>
+                <th>Ouvrable</th>
+                <th>HeureDebut</th>
+                <th>HeureFin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jour_speciale in jour_speciales %}
+            <tr>
+                <td>{{ jour_speciale.id }}</td>
+                <td>{{ jour_speciale.dateSpeciale ? jour_speciale.dateSpeciale|date('Y-m-d') : '' }}</td>
+                <td>{{ jour_speciale.ouvrable ? 'Yes' : 'No' }}</td>
+                <td>{{ jour_speciale.heureDebut ? jour_speciale.heureDebut|date('H:i:s') : '' }}</td>
+                <td>{{ jour_speciale.heureFin ? jour_speciale.heureFin|date('H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_jour_speciale_show', {'id': jour_speciale.id}) }}">show</a>
+                    <a href="{{ path('app_jour_speciale_edit', {'id': jour_speciale.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_jour_speciale_new') }}">Create new</a>
+{% endblock %}

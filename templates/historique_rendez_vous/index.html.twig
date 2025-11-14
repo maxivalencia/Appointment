@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HistoriqueRendezVous index{% endblock %}
+
+{% block body %}
+    <h1>HistoriqueRendezVous index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>RendezVous</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historique_rendez_vou in historique_rendez_vouses %}
+            <tr>
+                <td>{{ historique_rendez_vou.id }}</td>
+                <td>{{ historique_rendez_vou.rendezVous }}</td>
+                <td>
+                    <a href="{{ path('app_historique_rendez_vous_show', {'id': historique_rendez_vou.id}) }}">show</a>
+                    <a href="{{ path('app_historique_rendez_vous_edit', {'id': historique_rendez_vou.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_historique_rendez_vous_new') }}">Create new</a>
+{% endblock %}

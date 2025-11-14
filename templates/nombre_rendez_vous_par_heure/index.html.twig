@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NombreRendezVousParHeure index{% endblock %}
+
+{% block body %}
+    <h1>NombreRendezVousParHeure index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreRendezVous</th>
+                <th>DataApplication</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nombre_rendez_vous_par_heure in nombre_rendez_vous_par_heures %}
+            <tr>
+                <td>{{ nombre_rendez_vous_par_heure.id }}</td>
+                <td>{{ nombre_rendez_vous_par_heure.nombreRendezVous }}</td>
+                <td>{{ nombre_rendez_vous_par_heure.dataApplication ? nombre_rendez_vous_par_heure.dataApplication|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_nombre_rendez_vous_par_heure_show', {'id': nombre_rendez_vous_par_heure.id}) }}">show</a>
+                    <a href="{{ path('app_nombre_rendez_vous_par_heure_edit', {'id': nombre_rendez_vous_par_heure.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_new') }}">Create new</a>
+{% endblock %}

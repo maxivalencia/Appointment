@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\NombreJourMaximumRendezVousRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: NombreJourMaximumRendezVousRepository::class)]
+class NombreJourMaximumRendezVous
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nombreJour = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTime $dateApplication = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNombreJour(): ?int
+    {
+        return $this->nombreJour;
+    }
+
+    public function setNombreJour(int $nombreJour): static
+    {
+        $this->nombreJour = $nombreJour;
+
+        return $this;
+    }
+
+    public function getDateApplication(): ?\DateTime
+    {
+        return $this->dateApplication;
+    }
+
+    public function setDateApplication(\DateTime $dateApplication): static
+    {
+        $this->dateApplication = $dateApplication;
+
+        return $this;
+    }
+}

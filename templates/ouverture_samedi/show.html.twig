@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OuvertureSamedi{% endblock %}
+
+{% block body %}
+    <h1>OuvertureSamedi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ouverture_samedi.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ ouverture_samedi.dateDebut ? ouverture_samedi.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ ouverture_samedi.dateFin ? ouverture_samedi.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureDebut</th>
+                <td>{{ ouverture_samedi.heureDebut ? ouverture_samedi.heureDebut|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureFin</th>
+                <td>{{ ouverture_samedi.heureFin ? ouverture_samedi.heureFin|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EnVigueur</th>
+                <td>{{ ouverture_samedi.enVigueur ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ouverture_samedi_index') }}">back to list</a>
+
+    <a href="{{ path('app_ouverture_samedi_edit', {'id': ouverture_samedi.id}) }}">edit</a>
+
+    {{ include('ouverture_samedi/_delete_form.html.twig') }}
+{% endblock %}

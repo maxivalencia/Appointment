@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit JourSpeciale{% endblock %}
+
+{% block body %}
+    <h1>Edit JourSpeciale</h1>
+
+    {{ include('jour_speciale/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_jour_speciale_index') }}">back to list</a>
+
+    {{ include('jour_speciale/_delete_form.html.twig') }}
+{% endblock %}
