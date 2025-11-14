@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HistoriqueRendezVous index{% endblock %}
+{% block title %}Liste des Historiques des Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>HistoriqueRendezVous index</h1>
+    <h1>Liste des Historiques des Rendez-Vous</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>RendezVous</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'ID', 'historique_rendez_vou.id') }}</th>
+                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'Rendez-Vous', 'historique_rendez_vou.rendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'Actions', 'historique_rendez_vou.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +30,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(historique_rendez_vouses) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_historique_rendez_vous_new') }}">Create new</a>
 {% endblock %}

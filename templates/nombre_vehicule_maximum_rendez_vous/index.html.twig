@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreVehiculeMaximumRendezVous index{% endblock %}
+{% block title %}Liste du Nombre Véhicule Maximum par Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>NombreVehiculeMaximumRendezVous index</h1>
+    <h1>Liste du Nombre Véhicule Maximum par Rendez-Vous</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NombreVehicule</th>
-                <th>DateApplication</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(nombre_vehicule_maximum_rendez_vouses, 'ID', 'nombre_vehicule_maximum_rendez_vou.id') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_vehicule_maximum_rendez_vouses, 'Nombre de Véhicule', 'nombre_vehicule_maximum_rendez_vou.nombreVehicule') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_vehicule_maximum_rendez_vouses, 'Date d\'Application', 'nombre_vehicule_maximum_rendez_vou.dateApplication') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_vehicule_maximum_rendez_vouses, 'Actions', 'nombre_vehicule_maximum_rendez_vou.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +32,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(nombre_vehicule_maximum_rendez_vouses) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_new') }}">Create new</a>
 {% endblock %}

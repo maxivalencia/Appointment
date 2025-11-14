@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/duree/limite/avant/rendez/vous')]
 final class DureeLimiteAvantRendezVousController extends AbstractController
 {
     #[Route(name: 'app_duree_limite_avant_rendez_vous_index', methods: ['GET'])]
-    public function index(DureeLimiteAvantRendezVousRepository $dureeLimiteAvantRendezVousRepository): Response
+    public function index(Request $request, DureeLimiteAvantRendezVousRepository $dureeLimiteAvantRendezVousRepository, PaginatorInterface $paginator): Response
     {
+        $query = $dureeLimiteAvantRendezVousRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('duree_limite_avant_rendez_vous/index.html.twig', [
-            'duree_limite_avant_rendez_vouses' => $dureeLimiteAvantRendezVousRepository->findAll(),
+            'duree_limite_avant_rendez_vouses' => $pagination,
         ]);
     }
 

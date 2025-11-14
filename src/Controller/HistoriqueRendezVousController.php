@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/historique/rendez/vous')]
 final class HistoriqueRendezVousController extends AbstractController
 {
     #[Route(name: 'app_historique_rendez_vous_index', methods: ['GET'])]
-    public function index(HistoriqueRendezVousRepository $historiqueRendezVousRepository): Response
+    public function index(Request $request, HistoriqueRendezVousRepository $historiqueRendezVousRepository, PaginatorInterface $paginator): Response
     {
+        $query = $historiqueRendezVousRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('historique_rendez_vous/index.html.twig', [
-            'historique_rendez_vouses' => $historiqueRendezVousRepository->findAll(),
+            'historique_rendez_vouses' => $pagination,
         ]);
     }
 

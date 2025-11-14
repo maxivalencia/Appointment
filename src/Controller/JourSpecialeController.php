@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/jour/speciale')]
 final class JourSpecialeController extends AbstractController
 {
     #[Route(name: 'app_jour_speciale_index', methods: ['GET'])]
-    public function index(JourSpecialeRepository $jourSpecialeRepository): Response
+    public function index(Request $request, JourSpecialeRepository $jourSpecialeRepository, PaginatorInterface $paginator): Response
     {
+        $query = $jourSpecialeRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('jour_speciale/index.html.twig', [
-            'jour_speciales' => $jourSpecialeRepository->findAll(),
+            'jour_speciales' => $pagination,
         ]);
     }
 

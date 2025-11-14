@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DureeLimiteAvantRendezVous index{% endblock %}
+{% block title %}Liste des Durées Limites Avant Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>DureeLimiteAvantRendezVous index</h1>
+    <h1>Liste des Durées Limites Avant Rendez-Vous</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NombreHeure</th>
-                <th>DateApplication</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'ID', 'duree_limite_avant_rendez_vou.id') }}</th>
+                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Nombre d\'Heure', 'duree_limite_avant_rendez_vou.nombreHeure') }}</th>
+                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Date d\'Application', 'duree_limite_avant_rendez_vou.dateApplication') }}</th>
+                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Actions', 'duree_limite_avant_rendez_vou.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +32,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(duree_limite_avant_rendez_vouses) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_duree_limite_avant_rendez_vous_new') }}">Create new</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreVehiculeMaximumRendezVous{% endblock %}
+{% block title %}Nombre de Véhicule Maximum par Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>NombreVehiculeMaximumRendezVous</h1>
+    <h1>Nombre de Véhicule Maximum par Rendez-Vous</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ nombre_vehicule_maximum_rendez_vou.id }}</td>
             </tr>
             <tr>
-                <th>NombreVehicule</th>
+                <th>Nombre de Véhicule</th>
                 <td>{{ nombre_vehicule_maximum_rendez_vou.nombreVehicule }}</td>
             </tr>
             <tr>
-                <th>DateApplication</th>
+                <th>Date d'Application</th>
                 <td>{{ nombre_vehicule_maximum_rendez_vou.dateApplication ? nombre_vehicule_maximum_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>

@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreModificationMaximum index{% endblock %}
+{% block title %}Liste de Nombre de Modification Maximum{% endblock %}
 
 {% block body %}
-    <h1>NombreModificationMaximum index</h1>
+    <h1>Liste de Nombre de Modification Maximum</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NombreModification</th>
-                <th>DateApplication</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'ID', 'nombre_modification_maximum.id') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Nombre de Modification', 'nombre_modification_maximum.nombreModification') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Date d\'Application', 'nombre_modification_maximum.dateApplication') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Actions', 'nombre_modification_maximum.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +32,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(nombre_modification_maximums) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_nombre_modification_maximum_new') }}">Create new</a>
 {% endblock %}

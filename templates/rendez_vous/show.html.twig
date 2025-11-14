@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}RendezVous{% endblock %}
+{% block title %}Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>RendezVous</h1>
+    <h1>Rendez-Vous</h1>
 
     <table class="table">
         <tbody>
@@ -16,7 +16,7 @@
                 <td>{{ rendez_vou.immatriculation }}</td>
             </tr>
             <tr>
-                <th>Proprietaire</th>
+                <th>Propriétaire</th>
                 <td>{{ rendez_vou.proprietaire }}</td>
             </tr>
             <tr>
@@ -32,15 +32,15 @@
                 <td>{{ rendez_vou.adresse }}</td>
             </tr>
             <tr>
-                <th>DatePriseRendezVous</th>
+                <th>Date de Prise de Rendez-Vous</th>
                 <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateRendezVous</th>
+                <th>Date de Rendez-Vous</th>
                 <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>HeureRendezVous</th>
+                <th>Heure de Rendez-Vous</th>
                 <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
@@ -48,39 +48,39 @@
                 <td>{{ rendez_vou.confirmation ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>DateHeureArriveRendezVous</th>
+                <th>Date et Heure d'Arrive au Rendez-Vous</th>
                 <td>{{ rendez_vou.dateHeureArriveRendezVous ? rendez_vou.dateHeureArriveRendezVous|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateHeureFinVisite</th>
+                <th>Date et Heure de Fin de Visite</th>
                 <td>{{ rendez_vou.dateHeureFinVisite ? rendez_vou.dateHeureFinVisite|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateHeureDebutVisite</th>
+                <th>Date et Heure de Début de Visite</th>
                 <td>{{ rendez_vou.dateHeureDebutVisite ? rendez_vou.dateHeureDebutVisite|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>AnnulationRendezVous</th>
+                <th>Annulation de Rendez-Vous</th>
                 <td>{{ rendez_vou.annulationRendezVous ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>DateHeureAnnulationRendezVous</th>
+                <th>Date et Heure de l'Annulation du Rendez-Vous</th>
                 <td>{{ rendez_vou.dateHeureAnnulationRendezVous ? rendez_vou.dateHeureAnnulationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>CodeRendezVous</th>
+                <th>Code du Rendez-Vous</th>
                 <td>{{ rendez_vou.codeRendezVous }}</td>
             </tr>
             <tr>
-                <th>DateModificationRendezVous</th>
+                <th>Date de Modification du Rendez-Vous</th>
                 <td>{{ rendez_vou.dateModificationRendezVous ? rendez_vou.dateModificationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateOrigineRendezVous</th>
+                <th>Date d'Origine du Rendez-Vous</th>
                 <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>NombreModification</th>
+                <th>Nombre de Modification</th>
                 <td>{{ rendez_vou.nombreModification }}</td>
             </tr>
         </tbody>

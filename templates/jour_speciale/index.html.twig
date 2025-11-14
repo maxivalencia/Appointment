@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}JourSpeciale index{% endblock %}
+{% block title %}Liste Jour Spéciale{% endblock %}
 
 {% block body %}
-    <h1>JourSpeciale index</h1>
+    <h1>Liste Jour Spéciale </h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>DateSpeciale</th>
-                <th>Ouvrable</th>
-                <th>HeureDebut</th>
-                <th>HeureFin</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'ID', 'jour_speciale.id') }}</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'Date Spéciale', 'jour_speciale.dateSpeciale') }}</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'Ouvrable', 'jour_speciale.ouvrable') }}</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'Heure du Début', 'jour_speciale.heureDebut') }}</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'Heure de la Fin', 'jour_speciale.heureFin') }}</th>
+                <th>{{ knp_pagination_sortable(jour_speciales, 'Actions', 'jour_speciale.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +36,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(jour_speciales) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_jour_speciale_new') }}">Create new</a>
 {% endblock %}

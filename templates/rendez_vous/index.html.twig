@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}RendezVous index{% endblock %}
+{% block title %}Liste Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>RendezVous index</h1>
+    <h1>Liste Rendez-Vous</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Immatriculation</th>
-                <th>Proprietaire</th>
-                <th>Contact</th>
-                <th>Mail</th>
-                <th>Adresse</th>
-                <th>DatePriseRendezVous</th>
-                <th>DateRendezVous</th>
-                <th>HeureRendezVous</th>
-                <th>Confirmation</th>
-                <th>DateHeureArriveRendezVous</th>
-                <th>DateHeureFinVisite</th>
-                <th>DateHeureDebutVisite</th>
-                <th>AnnulationRendezVous</th>
-                <th>DateHeureAnnulationRendezVous</th>
-                <th>CodeRendezVous</th>
-                <th>DateModificationRendezVous</th>
-                <th>DateOrigineRendezVous</th>
-                <th>NombreModification</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'ID', 'rendez_vou.id') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Immatriculation', 'rendez_vou.immatriculation') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Propriétaire', 'rendez_vou.proprietaire') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Contact', 'rendez_vou.contact') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Mail', 'rendez_vou.mail') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Adresse', 'rendez_vou.adresse') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date de Prise du Rendez-Vous', 'rendez_vou.datePriseRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date du Rendez-Vous', 'rendez_vou.dateRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Heure du Rendez-Vous', 'rendez_vou.heureRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Confirmation', 'rendez_vou.confirmation') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure d\'Arrive au Rendez-Vous', 'rendez_vou.dateHeureArriveRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure du Fin de la Visite', 'rendez_vou.dateHeureFinVisite') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure du Début de la Visite', 'rendez_vou.dateHeureDebutVisite') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Annulation du Rendez-Vous', 'rendez_vou.annulationRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure d\'Annulation du Rendez-Vous', 'rendez_vou.dateHeureAnnulationRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Code Rendez-Vous', 'rendez_vou.codeRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date de Modification du Rendez-Vous', 'rendez_vou.dateModificationRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date d\'Origine du Rendez-Vous', 'rendez_vou.dateOrigineRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Nombre de Modification', 'rendez_vou.dateOrigineRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(rendez_vouses, 'Actions', 'rendez_vou.') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -64,6 +64,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(rendez_vouses) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_rendez_vous_new') }}">Create new</a>
 {% endblock %}

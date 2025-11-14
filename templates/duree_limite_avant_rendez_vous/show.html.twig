@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DureeLimiteAvantRendezVous{% endblock %}
+{% block title %}Durée Limite Avant Rendez Vous{% endblock %}
 
 {% block body %}
-    <h1>DureeLimiteAvantRendezVous</h1>
+    <h1>Durée Limite Avant Rendez Vous</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ duree_limite_avant_rendez_vou.id }}</td>
             </tr>
             <tr>
-                <th>NombreHeure</th>
+                <th>Nombre d'Heure</th>
                 <td>{{ duree_limite_avant_rendez_vou.nombreHeure ? duree_limite_avant_rendez_vou.nombreHeure|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateApplication</th>
+                <th>Date d'Application</th>
                 <td>{{ duree_limite_avant_rendez_vou.dateApplication ? duree_limite_avant_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>

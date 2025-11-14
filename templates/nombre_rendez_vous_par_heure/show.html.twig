@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreRendezVousParHeure{% endblock %}
+{% block title %}Nombre de Rendez-Vous Par Heure{% endblock %}
 
 {% block body %}
-    <h1>NombreRendezVousParHeure</h1>
+    <h1>Nombre de Rendez-Vous Par Heure</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ nombre_rendez_vous_par_heure.id }}</td>
             </tr>
             <tr>
-                <th>NombreRendezVous</th>
+                <th>Nombre de Rendez-Vous</th>
                 <td>{{ nombre_rendez_vous_par_heure.nombreRendezVous }}</td>
             </tr>
             <tr>
-                <th>DataApplication</th>
+                <th>Date d'Application</th>
                 <td>{{ nombre_rendez_vous_par_heure.dataApplication ? nombre_rendez_vous_par_heure.dataApplication|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>

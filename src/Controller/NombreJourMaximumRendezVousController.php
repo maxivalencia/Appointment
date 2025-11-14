@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/nombre/jour/maximum/rendez/vous')]
 final class NombreJourMaximumRendezVousController extends AbstractController
 {
     #[Route(name: 'app_nombre_jour_maximum_rendez_vous_index', methods: ['GET'])]
-    public function index(NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository): Response
+    public function index(Request $request, NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository, PaginatorInterface $paginator): Response
     {
+        $query = $nombreJourMaximumRendezVousRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('nombre_jour_maximum_rendez_vous/index.html.twig', [
-            'nombre_jour_maximum_rendez_vouses' => $nombreJourMaximumRendezVousRepository->findAll(),
+            'nombre_jour_maximum_rendez_vouses' => $pagination,
         ]);
     }
 

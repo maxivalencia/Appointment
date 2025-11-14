@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/nombre/rendez/vous/par/heure')]
 final class NombreRendezVousParHeureController extends AbstractController
 {
     #[Route(name: 'app_nombre_rendez_vous_par_heure_index', methods: ['GET'])]
-    public function index(NombreRendezVousParHeureRepository $nombreRendezVousParHeureRepository): Response
+    public function index(Request $request, NombreRendezVousParHeureRepository $nombreRendezVousParHeureRepository, PaginatorInterface $paginator): Response
     {
+        $query = $nombreRendezVousParHeureRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('nombre_rendez_vous_par_heure/index.html.twig', [
-            'nombre_rendez_vous_par_heures' => $nombreRendezVousParHeureRepository->findAll(),
+            'nombre_rendez_vous_par_heures' => $pagination,
         ]);
     }
 

@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreRendezVousParHeure index{% endblock %}
+{% block title %}Liste du Nombre de Rendez-Vous Par Heure{% endblock %}
 
 {% block body %}
-    <h1>NombreRendezVousParHeure index</h1>
+    <h1>Liste du Nombre de Rendez-Vous Par Heure</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NombreRendezVous</th>
-                <th>DataApplication</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'ID', 'nombre_rendez_vous_par_heure.id') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Nombre de Rendez-Vous', 'nombre_rendez_vous_par_heure.nombreRendezVous') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Date d\'Application', 'nombre_rendez_vous_par_heure.dataApplication') }}</th>
+                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Actions', 'nombre_rendez_vous_par_heure.id') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +32,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(nombre_rendez_vous_par_heures) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_nombre_rendez_vous_par_heure_new') }}">Create new</a>
 {% endblock %}

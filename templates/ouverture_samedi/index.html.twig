@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}OuvertureSamedi index{% endblock %}
+{% block title %}Liste d'Ouverture Samedi{% endblock %}
 
 {% block body %}
-    <h1>OuvertureSamedi index</h1>
+    <h1>Liste d'Ouverture Samedi</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>DateDebut</th>
-                <th>DateFin</th>
-                <th>HeureDebut</th>
-                <th>HeureFin</th>
-                <th>EnVigueur</th>
-                <th>actions</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'ID', 'ouverture_samedi.id') }}Id</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Date de Début', 'ouverture_samedi.dateDebut') }}DateDebut</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Date de Fin', 'ouverture_samedi.dateFin') }}DateFin</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Heure du Début', 'ouverture_samedi.heureDebut') }}HeureDebut</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Heure du Fin', 'ouverture_samedi.heureFin') }}HeureFin</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'En Vigueur', 'ouverture_samedi.enVigueur') }}EnVigueur</th>
+                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Actions', 'ouverture_samedi.id') }}actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +38,14 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(ouverture_samedis) }}
+            </ul>
+        </nav>
+    </div>
 
     <a href="{{ path('app_ouverture_samedi_new') }}">Create new</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}OuvertureSamedi{% endblock %}
+{% block title %}Ouverture Samedi{% endblock %}
 
 {% block body %}
-    <h1>OuvertureSamedi</h1>
+    <h1>Ouverture Samedi</h1>
 
     <table class="table">
         <tbody>
@@ -12,23 +12,23 @@
                 <td>{{ ouverture_samedi.id }}</td>
             </tr>
             <tr>
-                <th>DateDebut</th>
+                <th>Date de Début</th>
                 <td>{{ ouverture_samedi.dateDebut ? ouverture_samedi.dateDebut|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>DateFin</th>
+                <th>Date de Fin</th>
                 <td>{{ ouverture_samedi.dateFin ? ouverture_samedi.dateFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>HeureDebut</th>
+                <th>Heure du Début</th>
                 <td>{{ ouverture_samedi.heureDebut ? ouverture_samedi.heureDebut|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>HeureFin</th>
+                <th>Heure de la Fin</th>
                 <td>{{ ouverture_samedi.heureFin ? ouverture_samedi.heureFin|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>EnVigueur</th>
+                <th>En Vigueur</th>
                 <td>{{ ouverture_samedi.enVigueur ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>

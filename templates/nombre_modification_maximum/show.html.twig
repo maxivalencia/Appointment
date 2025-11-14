@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NombreModificationMaximum{% endblock %}
+{% block title %}Nombre de Modification Maximum{% endblock %}
 
 {% block body %}
-    <h1>NombreModificationMaximum</h1>
+    <h1>Nombre de Modification Maximum</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ nombre_modification_maximum.id }}</td>
             </tr>
             <tr>
-                <th>NombreModification</th>
+                <th>Nombre de Modification</th>
                 <td>{{ nombre_modification_maximum.nombreModification }}</td>
             </tr>
             <tr>
-                <th>DateApplication</th>
+                <th>Date d'Application</th>
                 <td>{{ nombre_modification_maximum.dateApplication ? nombre_modification_maximum.dateApplication|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>

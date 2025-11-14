@@ -10,15 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/nombre/modification/maximum')]
 final class NombreModificationMaximumController extends AbstractController
 {
     #[Route(name: 'app_nombre_modification_maximum_index', methods: ['GET'])]
-    public function index(NombreModificationMaximumRepository $nombreModificationMaximumRepository): Response
+    public function index(Request $request, NombreModificationMaximumRepository $nombreModificationMaximumRepository, PaginatorInterface $paginator): Response
     {
+        $query = $nombreModificationMaximumRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,                              
+            $request->query->getInt('page', 1),  
+            10                                   
+        );
         return $this->render('nombre_modification_maximum/index.html.twig', [
-            'nombre_modification_maximums' => $nombreModificationMaximumRepository->findAll(),
+            'nombre_modification_maximums' => $pagination,
         ]);
     }
 
