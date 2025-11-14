@@ -18,3 +18,11 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> autres fichiers###
+/nodes_modules/
+npm-debug.log
+yarn-error.log
+.idea/
+/*.lock
+###< autres fichiers###
