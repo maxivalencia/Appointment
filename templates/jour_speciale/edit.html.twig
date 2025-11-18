@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edition Jour Spéciale</h1>
 
-    {{ include('jour_speciale/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('jour_speciale/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_jour_speciale_index') }}">back to list</a>
+    <a href="{{ path('app_jour_speciale_index') }}">Retour</a>
 
     {{ include('jour_speciale/_delete_form.html.twig') }}
 {% endblock %}

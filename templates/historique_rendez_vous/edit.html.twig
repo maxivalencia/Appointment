@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edition Historique des Rendez-Vous</h1>
 
-    {{ include('historique_rendez_vous/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('historique_rendez_vous/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_historique_rendez_vous_index') }}">back to list</a>
+    <a href="{{ path('app_historique_rendez_vous_index') }}">Retour</a>
 
     {{ include('historique_rendez_vous/_delete_form.html.twig') }}
 {% endblock %}

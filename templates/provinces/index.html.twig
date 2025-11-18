@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Provinces{% endblock %}
+
+{% block body %}
+    <h1>Liste des Provinces</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(provinces, 'ID', 'province.id') }}</th>
+                <th>{{ knp_pagination_sortable(provinces, 'Province', 'province.province') }}</th>
+                <th>{{ knp_pagination_sortable(provinces, 'Actions', 'province.id') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for province in provinces %}
+            <tr>
+                <td>{{ province.id }}</td>
+                <td>{{ province.province }}</td>
+                <td>
+                    <a href="{{ path('app_provinces_show', {'id': province.id}) }}">show</a>
+                    <a href="{{ path('app_provinces_edit', {'id': province.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun enregistrement trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination pagination-lg">
+                {{ knp_pagination_render(provinces) }}
+            </ul>
+        </nav>
+    </div>
+
+    <a href="{{ path('app_provinces_new') }}">Nouveau</a>
+{% endblock %}

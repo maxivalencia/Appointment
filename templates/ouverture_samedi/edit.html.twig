@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edition de l'Ouverture du Samedi</h1>
 
-    {{ include('ouverture_samedi/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('ouverture_samedi/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_ouverture_samedi_index') }}">back to list</a>
+    <a href="{{ path('app_ouverture_samedi_index') }}">Retour</a>
 
     {{ include('ouverture_samedi/_delete_form.html.twig') }}
 {% endblock %}

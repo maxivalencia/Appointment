@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_jour_speciale_index') }}">back to list</a>
+    <a href="{{ path('app_jour_speciale_index') }}">Retour</a>
 
-    <a href="{{ path('app_jour_speciale_edit', {'id': jour_speciale.id}) }}">edit</a>
+    <a href="{{ path('app_jour_speciale_edit', {'id': jour_speciale.id}) }}">edition</a>
 
     {{ include('jour_speciale/_delete_form.html.twig') }}
 {% endblock %}

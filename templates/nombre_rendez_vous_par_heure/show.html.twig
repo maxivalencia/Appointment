@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">back to list</a>
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">Retour</a>
 
-    <a href="{{ path('app_nombre_rendez_vous_par_heure_edit', {'id': nombre_rendez_vous_par_heure.id}) }}">edit</a>
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_edit', {'id': nombre_rendez_vous_par_heure.id}) }}">edition</a>
 
     {{ include('nombre_rendez_vous_par_heure/_delete_form.html.twig') }}
 {% endblock %}

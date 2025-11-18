@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edition du Nombre de Rendez-Vous Par Heure</h1>
 
-    {{ include('nombre_rendez_vous_par_heure/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('nombre_rendez_vous_par_heure/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">back to list</a>
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">Retour</a>
 
     {{ include('nombre_rendez_vous_par_heure/_delete_form.html.twig') }}
 {% endblock %}

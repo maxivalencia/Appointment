@@ -71,6 +71,9 @@ class RendezVous
     #[ORM\ManyToOne(inversedBy: 'idRendezVous')]
     private ?HistoriqueRendezVous $historiqueRendezVous = null;
 
+    #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
+    private ?Centres $centre = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -300,6 +303,18 @@ class RendezVous
     public function setHistoriqueRendezVous(?HistoriqueRendezVous $historiqueRendezVous): static
     {
         $this->historiqueRendezVous = $historiqueRendezVous;
+
+        return $this;
+    }
+
+    public function getCentre(): ?Centres
+    {
+        return $this->centre;
+    }
+
+    public function setCentre(?Centres $centre): static
+    {
+        $this->centre = $centre;
 
         return $this;
     }
