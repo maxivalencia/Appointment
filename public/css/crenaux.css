@@ -1,0 +1,37 @@
+.slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.slot-btn {
+    padding: 10px 15px;
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.slot-btn:hover {
+    opacity: 0.8;
+}
+
+/* largeur et padding */
+.datetimePicker {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+}
+
+/* focus */
+.datetimePicker:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 3px rgba(13,110,253,0.3);
+    outline: none;
+}
+
+/* police et taille */
+.datetimePicker, .flatpickr-input {
+    font-size: 0.95rem;
+}

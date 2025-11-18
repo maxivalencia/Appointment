@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selection Rendez-Vous{% endblock %}
+
+{% block body %}
+    <h1>Sélectionner un créneau</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.dateRendezVous) }}
+        <button class="btn-action save">Afficher les heures</button>
+    {{ form_end(form) }}
+
+    <hr>
+
+    {% if availableSlots is not empty %}
+        <h3>Créneaux disponibles :</h3>
+
+        <div class="slots-container">
+            {% for slot in availableSlots %}
+                <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
+                class="slot-btn">
+                    {{ slot|date('H:i') }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
