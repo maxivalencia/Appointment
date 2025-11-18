@@ -8,9 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(provinces, 'ID', 'province.id') }}</th>
-                <th>{{ knp_pagination_sortable(provinces, 'Province', 'province.province') }}</th>
-                <th>{{ knp_pagination_sortable(provinces, 'Actions', 'province.id') }}</th>
+                <th>ID</th>
+                <th>Province</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +19,8 @@
                 <td>{{ province.id }}</td>
                 <td>{{ province.province }}</td>
                 <td>
-                    <a href="{{ path('app_provinces_show', {'id': province.id}) }}">show</a>
-                    <a href="{{ path('app_provinces_edit', {'id': province.id}) }}">edit</a>
+                    <a href="{{ path('app_provinces_show', {'id': province.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_provinces_edit', {'id': province.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_provinces_new') }}">Nouveau</a>
+    <a href="{{ path('app_provinces_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

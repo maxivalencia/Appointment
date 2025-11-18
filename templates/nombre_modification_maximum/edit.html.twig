@@ -7,7 +7,7 @@
 
     {{ include('nombre_modification_maximum/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_nombre_modification_maximum_index') }}">Retour</a>
+    <a href="{{ path('app_nombre_modification_maximum_index') }}" class="btn-action back"><i class="fa fa-arrow-left"></i> Retour</a>
 
     {{ include('nombre_modification_maximum/_delete_form.html.twig') }}
 {% endblock %}

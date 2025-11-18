@@ -8,10 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'ID', 'duree_limite_avant_rendez_vou.id') }}</th>
-                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Nombre d\'Heure', 'duree_limite_avant_rendez_vou.nombreHeure') }}</th>
-                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Date d\'Application', 'duree_limite_avant_rendez_vou.dateApplication') }}</th>
-                <th>{{ knp_pagination_sortable(duree_limite_avant_rendez_vouses, 'Actions', 'duree_limite_avant_rendez_vou.id') }}</th>
+                <th>ID</th>
+                <th>Nombre d'Heure</th>
+                <th>Date d'Application</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +21,8 @@
                 <td>{{ duree_limite_avant_rendez_vou.nombreHeure ? duree_limite_avant_rendez_vou.nombreHeure|date('H:i:s') : '' }}</td>
                 <td>{{ duree_limite_avant_rendez_vou.dateApplication ? duree_limite_avant_rendez_vou.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_duree_limite_avant_rendez_vous_show', {'id': duree_limite_avant_rendez_vou.id}) }}">show</a>
-                    <a href="{{ path('app_duree_limite_avant_rendez_vous_edit', {'id': duree_limite_avant_rendez_vou.id}) }}">edit</a>
+                    <a href="{{ path('app_duree_limite_avant_rendez_vous_show', {'id': duree_limite_avant_rendez_vou.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_duree_limite_avant_rendez_vous_edit', {'id': duree_limite_avant_rendez_vou.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_duree_limite_avant_rendez_vous_new') }}">Nouveau</a>
+    <a href="{{ path('app_duree_limite_avant_rendez_vous_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

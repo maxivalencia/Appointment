@@ -7,7 +7,7 @@
 
     {{ include('nombre_rendez_vous_par_heure/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}">Retour</a>
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_index') }}" class="btn-action back"><i class="fa fa-arrow-left"></i> Retour</a>
 
     {{ include('nombre_rendez_vous_par_heure/_delete_form.html.twig') }}
 {% endblock %}

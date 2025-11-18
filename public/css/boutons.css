@@ -1,0 +1,45 @@
+/* style global pour tous les boutons CRUD */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;           /* espace entre icône et texte */
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.3rem;
+    font-size: 0.875rem; /* taille uniforme */
+    text-decoration: none;
+    cursor: pointer;
+    width: 120px;
+    height: 38px;
+    /* display: inline-block; */
+    margin: 10px;
+}
+
+/* Couleurs selon l’action */
+.btn-action.new      { background-color: #28a745; color: #fff; } /* vert */
+.btn-action.show     { background-color: #17a2b8; color: #fff; } /* bleu clair */
+.btn-action.edit     { background-color: #007bff; color: #fff; } /* bleu foncé */
+.btn-action.delete   { background-color: #dc3545; color: #fff; } /* rouge */
+.btn-action.save     { background-color: #28a745; color: #fff; } /* vert */
+.btn-action.back     { background-color: #6c757d; color: #fff; } /* gris */
+
+/* Hover effet */
+.btn-action:hover {
+    opacity: 0.85;
+}
+
+/* Supprimer bordure si bouton formulaire */
+.btn-action button {
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;          /* espace entre les boutons */
+    align-items: center;
+}

@@ -8,10 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(nombre_jour_maximum_rendez_vouses, 'ID', 'nombre_jour_maximum_rendez_vou.id') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_jour_maximum_rendez_vouses, 'Nombre de Jour', 'nombre_jour_maximum_rendez_vou.nombreJour') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_jour_maximum_rendez_vouses, 'Date d\'Application', 'nombre_jour_maximum_rendez_vou.dateApplication') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_jour_maximum_rendez_vouses, 'Actions', 'nombre_jour_maximum_rendez_vou.id') }}</th>
+                <th>ID</th>
+                <th>Nombre de Jour</th>
+                <th>Date d'Application</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +21,8 @@
                 <td>{{ nombre_jour_maximum_rendez_vou.nombreJour }}</td>
                 <td>{{ nombre_jour_maximum_rendez_vou.dateApplication ? nombre_jour_maximum_rendez_vou.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_show', {'id': nombre_jour_maximum_rendez_vou.id}) }}">show</a>
-                    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_edit', {'id': nombre_jour_maximum_rendez_vou.id}) }}">edit</a>
+                    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_show', {'id': nombre_jour_maximum_rendez_vou.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_edit', {'id': nombre_jour_maximum_rendez_vou.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_new') }}">Nouveau</a>
+    <a href="{{ path('app_nombre_jour_maximum_rendez_vous_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

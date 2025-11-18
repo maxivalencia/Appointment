@@ -8,10 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'ID', 'nombre_modification_maximum.id') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Nombre de Modification', 'nombre_modification_maximum.nombreModification') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Date d\'Application', 'nombre_modification_maximum.dateApplication') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_modification_maximums, 'Actions', 'nombre_modification_maximum.id') }}</th>
+                <th>ID</th>
+                <th>Nombre de Modification</th>
+                <th>Date d'Application</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +21,8 @@
                 <td>{{ nombre_modification_maximum.nombreModification }}</td>
                 <td>{{ nombre_modification_maximum.dateApplication ? nombre_modification_maximum.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_nombre_modification_maximum_show', {'id': nombre_modification_maximum.id}) }}">show</a>
-                    <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}">edit</a>
+                    <a href="{{ path('app_nombre_modification_maximum_show', {'id': nombre_modification_maximum.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_nombre_modification_maximum_new') }}">Nouveau</a>
+    <a href="{{ path('app_nombre_modification_maximum_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

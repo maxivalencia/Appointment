@@ -8,13 +8,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'ID', 'ouverture_samedi.id') }}Id</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Date de Début', 'ouverture_samedi.dateDebut') }}DateDebut</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Date de Fin', 'ouverture_samedi.dateFin') }}DateFin</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Heure du Début', 'ouverture_samedi.heureDebut') }}HeureDebut</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Heure du Fin', 'ouverture_samedi.heureFin') }}HeureFin</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'En Vigueur', 'ouverture_samedi.enVigueur') }}EnVigueur</th>
-                <th>{{ knp_pagination_sortable(ouverture_samedis, 'Actions', 'ouverture_samedi.id') }}actions</th>
+                <th>ID</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+                <th>Heure du Début</th>
+                <th>Heure du Fin</th>
+                <th>En Vigueur</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +27,8 @@
                 <td>{{ ouverture_samedi.heureFin ? ouverture_samedi.heureFin|date('H:i:s') : '' }}</td>
                 <td>{{ ouverture_samedi.enVigueur ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('app_ouverture_samedi_show', {'id': ouverture_samedi.id}) }}">show</a>
-                    <a href="{{ path('app_ouverture_samedi_edit', {'id': ouverture_samedi.id}) }}">edit</a>
+                    <a href="{{ path('app_ouverture_samedi_show', {'id': ouverture_samedi.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_ouverture_samedi_edit', {'id': ouverture_samedi.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -47,5 +47,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_ouverture_samedi_new') }}">Nouveau</a>
+    <a href="{{ path('app_ouverture_samedi_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

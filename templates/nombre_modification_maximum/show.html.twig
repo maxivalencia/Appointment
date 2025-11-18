@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_nombre_modification_maximum_index') }}">Retour</a>
+    <a href="{{ path('app_nombre_modification_maximum_index') }}" class="btn-action back"><i class="fa fa-arrow-left"></i> Retour</a>
 
-    <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}">edition</a>
+    <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}" class="btn-action edit">edition</a>
 
     {{ include('nombre_modification_maximum/_delete_form.html.twig') }}
 {% endblock %}

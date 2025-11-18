@@ -8,9 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'ID', 'historique_rendez_vou.id') }}</th>
-                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'Rendez-Vous', 'historique_rendez_vou.rendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(historique_rendez_vouses, 'Actions', 'historique_rendez_vou.id') }}</th>
+                <th>ID</th>
+                <th>Rendez-Vous</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +19,8 @@
                 <td>{{ historique_rendez_vou.id }}</td>
                 <td>{{ historique_rendez_vou.rendezVous }}</td>
                 <td>
-                    <a href="{{ path('app_historique_rendez_vous_show', {'id': historique_rendez_vou.id}) }}">show</a>
-                    <a href="{{ path('app_historique_rendez_vous_edit', {'id': historique_rendez_vou.id}) }}">edit</a>
+                    <a href="{{ path('app_historique_rendez_vous_show', {'id': historique_rendez_vou.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_historique_rendez_vous_edit', {'id': historique_rendez_vou.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_historique_rendez_vous_new') }}">Nouveau</a>
+    <a href="{{ path('app_historique_rendez_vous_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

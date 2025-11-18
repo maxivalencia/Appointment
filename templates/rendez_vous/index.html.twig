@@ -8,26 +8,26 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'ID', 'rendez_vou.id') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Immatriculation', 'rendez_vou.immatriculation') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Propriétaire', 'rendez_vou.proprietaire') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Contact', 'rendez_vou.contact') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Mail', 'rendez_vou.mail') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Adresse', 'rendez_vou.adresse') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date de Prise du Rendez-Vous', 'rendez_vou.datePriseRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date du Rendez-Vous', 'rendez_vou.dateRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Heure du Rendez-Vous', 'rendez_vou.heureRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Confirmation', 'rendez_vou.confirmation') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure d\'Arrive au Rendez-Vous', 'rendez_vou.dateHeureArriveRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure du Fin de la Visite', 'rendez_vou.dateHeureFinVisite') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure du Début de la Visite', 'rendez_vou.dateHeureDebutVisite') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Annulation du Rendez-Vous', 'rendez_vou.annulationRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date et Heure d\'Annulation du Rendez-Vous', 'rendez_vou.dateHeureAnnulationRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Code Rendez-Vous', 'rendez_vou.codeRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date de Modification du Rendez-Vous', 'rendez_vou.dateModificationRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Date d\'Origine du Rendez-Vous', 'rendez_vou.dateOrigineRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Nombre de Modification', 'rendez_vou.dateOrigineRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(rendez_vouses, 'Actions', 'rendez_vou.') }}</th>
+                <th>ID</th>
+                <th>Immatriculation</th>
+                <th>Propriétaire</th>
+                <th>Contact</th>
+                <th>Mail</th>
+                <th>Adresse</th>
+                <th>Date de Prise du Rendez-Vous</th>
+                <th>Date du Rendez-Vous</th>
+                <th>Heure du Rendez-Vous</th>
+                <th>Confirmation</th>
+                <th>Date et Heure d'Arrive au Rendez-Vous</th>
+                <th>Date et Heure du Fin de la Visite</th>
+                <th>Date et Heure du Début de la Visite</th>
+                <th>Annulation du Rendez-Vous</th>
+                <th>Date et Heure d'Annulation du Rendez-Vous</th>
+                <th>Code Rendez-Vous</th>
+                <th>Date de Modification du Rendez-Vous</th>
+                <th>Date d'Origine du Rendez-Vous</th>
+                <th>Nombre de Modification</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -53,8 +53,8 @@
                 <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('d/m/Y H:i:s') : '' }}</td>
                 <td>{{ rendez_vou.nombreModification }}</td>
                 <td>
-                    <a href="{{ path('app_rendez_vous_show', {'id': rendez_vou.id}) }}">show</a>
-                    <a href="{{ path('app_rendez_vous_edit', {'id': rendez_vou.id}) }}">edit</a>
+                    <a href="{{ path('app_rendez_vous_show', {'id': rendez_vou.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_rendez_vous_edit', {'id': rendez_vou.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -73,5 +73,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_rendez_vous_new') }}">Nouveau</a>
+    <a href="{{ path('app_rendez_vous_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}

@@ -8,10 +8,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'ID', 'nombre_rendez_vous_par_heure.id') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Nombre de Rendez-Vous', 'nombre_rendez_vous_par_heure.nombreRendezVous') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Date d\'Application', 'nombre_rendez_vous_par_heure.dataApplication') }}</th>
-                <th>{{ knp_pagination_sortable(nombre_rendez_vous_par_heures, 'Actions', 'nombre_rendez_vous_par_heure.id') }}</th>
+                <th>ID</th>
+                <th>Nombre de Rendez-Vous</th>
+                <th>Date d'Application</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +21,8 @@
                 <td>{{ nombre_rendez_vous_par_heure.nombreRendezVous }}</td>
                 <td>{{ nombre_rendez_vous_par_heure.dataApplication ? nombre_rendez_vous_par_heure.dataApplication|date('d/m/Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_nombre_rendez_vous_par_heure_show', {'id': nombre_rendez_vous_par_heure.id}) }}">show</a>
-                    <a href="{{ path('app_nombre_rendez_vous_par_heure_edit', {'id': nombre_rendez_vous_par_heure.id}) }}">edit</a>
+                    <a href="{{ path('app_nombre_rendez_vous_par_heure_show', {'id': nombre_rendez_vous_par_heure.id}) }}" class="btn-action show"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('app_nombre_rendez_vous_par_heure_edit', {'id': nombre_rendez_vous_par_heure.id}) }}" class="btn-action edit"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </nav>
     </div>
 
-    <a href="{{ path('app_nombre_rendez_vous_par_heure_new') }}">Nouveau</a>
+    <a href="{{ path('app_nombre_rendez_vous_par_heure_new') }}" class="btn-action new"><i class="fas fa-plus"></i> Nouveau</a>
 {% endblock %}
