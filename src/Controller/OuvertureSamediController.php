@@ -21,9 +21,9 @@ final class OuvertureSamediController extends AbstractController
         $query = $ouvertureSamediRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('ouverture_samedi/index.html.twig', [
             'ouverture_samedis' => $pagination,

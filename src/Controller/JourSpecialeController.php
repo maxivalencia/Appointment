@@ -21,9 +21,9 @@ final class JourSpecialeController extends AbstractController
         $query = $jourSpecialeRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('jour_speciale/index.html.twig', [
             'jour_speciales' => $pagination,

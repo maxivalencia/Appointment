@@ -21,9 +21,9 @@ final class NombreJourMaximumRendezVousController extends AbstractController
         $query = $nombreJourMaximumRendezVousRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('nombre_jour_maximum_rendez_vous/index.html.twig', [
             'nombre_jour_maximum_rendez_vouses' => $pagination,

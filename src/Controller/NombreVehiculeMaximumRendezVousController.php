@@ -21,9 +21,9 @@ final class NombreVehiculeMaximumRendezVousController extends AbstractController
         $query = $nombreVehiculeMaximumRendezVousRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('nombre_vehicule_maximum_rendez_vous/index.html.twig', [
             'nombre_vehicule_maximum_rendez_vouses' => $pagination,

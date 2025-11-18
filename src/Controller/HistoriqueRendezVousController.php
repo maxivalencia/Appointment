@@ -21,9 +21,9 @@ final class HistoriqueRendezVousController extends AbstractController
         $query = $historiqueRendezVousRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('historique_rendez_vous/index.html.twig', [
             'historique_rendez_vouses' => $pagination,

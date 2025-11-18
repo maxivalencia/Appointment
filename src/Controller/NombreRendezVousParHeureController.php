@@ -21,9 +21,9 @@ final class NombreRendezVousParHeureController extends AbstractController
         $query = $nombreRendezVousParHeureRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('nombre_rendez_vous_par_heure/index.html.twig', [
             'nombre_rendez_vous_par_heures' => $pagination,

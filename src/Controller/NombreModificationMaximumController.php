@@ -21,9 +21,9 @@ final class NombreModificationMaximumController extends AbstractController
         $query = $nombreModificationMaximumRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('nombre_modification_maximum/index.html.twig', [
             'nombre_modification_maximums' => $pagination,

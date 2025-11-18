@@ -21,11 +21,11 @@
         {% for ouverture_samedi in ouverture_samedis %}
             <tr>
                 <td>{{ ouverture_samedi.id }}</td>
-                <td>{{ ouverture_samedi.dateDebut ? ouverture_samedi.dateDebut|date('Y-m-d') : '' }}</td>
-                <td>{{ ouverture_samedi.dateFin ? ouverture_samedi.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ ouverture_samedi.dateDebut ? ouverture_samedi.dateDebut|date('d/m/Y') : '' }}</td>
+                <td>{{ ouverture_samedi.dateFin ? ouverture_samedi.dateFin|date('d/m/Y') : '' }}</td>
                 <td>{{ ouverture_samedi.heureDebut ? ouverture_samedi.heureDebut|date('H:i:s') : '' }}</td>
                 <td>{{ ouverture_samedi.heureFin ? ouverture_samedi.heureFin|date('H:i:s') : '' }}</td>
-                <td>{{ ouverture_samedi.enVigueur ? 'Yes' : 'No' }}</td>
+                <td>{{ ouverture_samedi.enVigueur ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('app_ouverture_samedi_show', {'id': ouverture_samedi.id}) }}">show</a>
                     <a href="{{ path('app_ouverture_samedi_edit', {'id': ouverture_samedi.id}) }}">edit</a>

@@ -39,18 +39,18 @@
                 <td>{{ rendez_vou.contact }}</td>
                 <td>{{ rendez_vou.mail }}</td>
                 <td>{{ rendez_vou.adresse }}</td>
-                <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|date('Y-m-d') : '' }}</td>
+                <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|date('d/m/Y') : '' }}</td>
                 <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.confirmation ? 'Yes' : 'No' }}</td>
-                <td>{{ rendez_vou.dateHeureArriveRendezVous ? rendez_vou.dateHeureArriveRendezVous|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.dateHeureFinVisite ? rendez_vou.dateHeureFinVisite|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.dateHeureDebutVisite ? rendez_vou.dateHeureDebutVisite|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.annulationRendezVous ? 'Yes' : 'No' }}</td>
-                <td>{{ rendez_vou.dateHeureAnnulationRendezVous ? rendez_vou.dateHeureAnnulationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.confirmation ? 'Oui' : 'Non' }}</td>
+                <td>{{ rendez_vou.dateHeureArriveRendezVous ? rendez_vou.dateHeureArriveRendezVous|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateHeureFinVisite ? rendez_vou.dateHeureFinVisite|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateHeureDebutVisite ? rendez_vou.dateHeureDebutVisite|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.annulationRendezVous ? 'Oui' : 'Non' }}</td>
+                <td>{{ rendez_vou.dateHeureAnnulationRendezVous ? rendez_vou.dateHeureAnnulationRendezVous|date('d/m/Y H:i:s') : '' }}</td>
                 <td>{{ rendez_vou.codeRendezVous }}</td>
-                <td>{{ rendez_vou.dateModificationRendezVous ? rendez_vou.dateModificationRendezVous|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateModificationRendezVous ? rendez_vou.dateModificationRendezVous|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateOrigineRendezVous ? rendez_vou.dateOrigineRendezVous|date('d/m/Y H:i:s') : '' }}</td>
                 <td>{{ rendez_vou.nombreModification }}</td>
                 <td>
                     <a href="{{ path('app_rendez_vous_show', {'id': rendez_vou.id}) }}">show</a>

@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ duree_limite_avant_rendez_vou.id }}</td>
                 <td>{{ duree_limite_avant_rendez_vou.nombreHeure ? duree_limite_avant_rendez_vou.nombreHeure|date('H:i:s') : '' }}</td>
-                <td>{{ duree_limite_avant_rendez_vou.dateApplication ? duree_limite_avant_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
+                <td>{{ duree_limite_avant_rendez_vou.dateApplication ? duree_limite_avant_rendez_vou.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
                     <a href="{{ path('app_duree_limite_avant_rendez_vous_show', {'id': duree_limite_avant_rendez_vou.id}) }}">show</a>
                     <a href="{{ path('app_duree_limite_avant_rendez_vous_edit', {'id': duree_limite_avant_rendez_vou.id}) }}">edit</a>

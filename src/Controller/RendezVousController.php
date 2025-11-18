@@ -21,9 +21,9 @@ final class RendezVousController extends AbstractController
         $query = $rendezVousRepository->findAll();
 
         $pagination = $paginator->paginate(
-            $query,                              
-            $request->query->getInt('page', 1),  
-            10                                   
+            $query,
+            $request->query->getInt('page', 1),
+            10
         );
         return $this->render('rendez_vous/index.html.twig', [
             'rendez_vouses' => $pagination,

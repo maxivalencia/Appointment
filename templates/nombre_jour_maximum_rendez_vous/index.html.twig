@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ nombre_jour_maximum_rendez_vou.id }}</td>
                 <td>{{ nombre_jour_maximum_rendez_vou.nombreJour }}</td>
-                <td>{{ nombre_jour_maximum_rendez_vou.dateApplication ? nombre_jour_maximum_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
+                <td>{{ nombre_jour_maximum_rendez_vou.dateApplication ? nombre_jour_maximum_rendez_vou.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
                     <a href="{{ path('app_nombre_jour_maximum_rendez_vous_show', {'id': nombre_jour_maximum_rendez_vou.id}) }}">show</a>
                     <a href="{{ path('app_nombre_jour_maximum_rendez_vous_edit', {'id': nombre_jour_maximum_rendez_vou.id}) }}">edit</a>

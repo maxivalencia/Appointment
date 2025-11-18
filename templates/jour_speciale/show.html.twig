@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Date Spéciale</th>
-                <td>{{ jour_speciale.dateSpeciale ? jour_speciale.dateSpeciale|date('Y-m-d') : '' }}</td>
+                <td>{{ jour_speciale.dateSpeciale ? jour_speciale.dateSpeciale|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Ouvrable</th>
-                <td>{{ jour_speciale.ouvrable ? 'Yes' : 'No' }}</td>
+                <td>{{ jour_speciale.ouvrable ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
                 <th>Heure du Début</th>

@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ nombre_modification_maximum.id }}</td>
                 <td>{{ nombre_modification_maximum.nombreModification }}</td>
-                <td>{{ nombre_modification_maximum.dateApplication ? nombre_modification_maximum.dateApplication|date('Y-m-d') : '' }}</td>
+                <td>{{ nombre_modification_maximum.dateApplication ? nombre_modification_maximum.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
                     <a href="{{ path('app_nombre_modification_maximum_show', {'id': nombre_modification_maximum.id}) }}">show</a>
                     <a href="{{ path('app_nombre_modification_maximum_edit', {'id': nombre_modification_maximum.id}) }}">edit</a>

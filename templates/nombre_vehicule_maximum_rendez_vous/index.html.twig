@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ nombre_vehicule_maximum_rendez_vou.id }}</td>
                 <td>{{ nombre_vehicule_maximum_rendez_vou.nombreVehicule }}</td>
-                <td>{{ nombre_vehicule_maximum_rendez_vou.dateApplication ? nombre_vehicule_maximum_rendez_vou.dateApplication|date('Y-m-d') : '' }}</td>
+                <td>{{ nombre_vehicule_maximum_rendez_vou.dateApplication ? nombre_vehicule_maximum_rendez_vou.dateApplication|date('d/m/Y') : '' }}</td>
                 <td>
                     <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_show', {'id': nombre_vehicule_maximum_rendez_vou.id}) }}">show</a>
                     <a href="{{ path('app_nombre_vehicule_maximum_rendez_vous_edit', {'id': nombre_vehicule_maximum_rendez_vou.id}) }}">edit</a>

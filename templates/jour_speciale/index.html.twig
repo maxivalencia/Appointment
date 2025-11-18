@@ -20,8 +20,8 @@
         {% for jour_speciale in jour_speciales %}
             <tr>
                 <td>{{ jour_speciale.id }}</td>
-                <td>{{ jour_speciale.dateSpeciale ? jour_speciale.dateSpeciale|date('Y-m-d') : '' }}</td>
-                <td>{{ jour_speciale.ouvrable ? 'Yes' : 'No' }}</td>
+                <td>{{ jour_speciale.dateSpeciale ? jour_speciale.dateSpeciale|date('d/m/Y') : '' }}</td>
+                <td>{{ jour_speciale.ouvrable ? 'Oui' : 'Non' }}</td>
                 <td>{{ jour_speciale.heureDebut ? jour_speciale.heureDebut|date('H:i:s') : '' }}</td>
                 <td>{{ jour_speciale.heureFin ? jour_speciale.heureFin|date('H:i:s') : '' }}</td>
                 <td>

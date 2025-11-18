@@ -10,15 +10,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/centres')]
 final class CentresController extends AbstractController
 {
     #[Route(name: 'app_centres_index', methods: ['GET'])]
-    public function index(CentresRepository $centresRepository): Response
+    public function index(Request $request, CentresRepository $centresRepository, PaginatorInterface $paginator): Response
     {
+        $query = $centresRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('centres/index.html.twig', [
-            'centres' => $centresRepository->findAll(),
+            'centres' => $pagination,
         ]);
     }
 
