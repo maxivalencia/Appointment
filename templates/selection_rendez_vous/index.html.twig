@@ -5,23 +5,34 @@
 {% block body %}
     <h1>Sélectionner un créneau</h1>
 
-    {{ form_start(form) }}
+    {# {{ form_start(form) }}
         {{ form_row(form) }}
-        {# <button type="submit" class="btn-action save">Afficher les heures</button> #}
-        <button class="btn-action save"><i class="fa fa-calendar"></i> Afficher les heures</button>
-    {{ form_end(form) }}
+        <button type="submit" class="btn-action save"><i class="fa fa-calendar"></i> Afficher les heures</button>
+    {{ form_end(form) }} #}
+    <form method="get" action="{{ path('app_selection_rendez_vous') }}">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="dateRendezVous">
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous :</span>
+            </label>
+            <input
+                type="date"
+                id="dateRendezVous"
+                name="dateRendezVous"
+                required
+                class="form-control datepicker"
+                value="{{ date|date('Y-m-d') }}"
+            >
+        </div>
+
+        <button type="submit" class="btn-action save">
+            <i class="fa fa-calendar"></i> Afficher les heures disponibles
+        </button>
+    </form>
 
     <hr>
 
-    {# <form method="get" action="{{ path('app_selection_rendez_vous') }}">
-        <label for="dateRendezVous">Date de rendez-vous :</label>
-        <input type="date" id="dateRendezVous" name="dateRendezVous" required class="form-control">
-
-        <button type="submit" class="btn btn-primary">Afficher les heures</button>
-    </form> #}
-
-    {# {% if availableSlots is not empty %}
-        <h3>Créneaux disponibles :</h3>
+    {% if availableSlots is not empty %}
+        <h3>Créneaux disponibles pour la date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY")}} : </h3>
 
         <div class="slots-container">
             {% for slot in availableSlots %}
@@ -31,6 +42,6 @@
                 </a>
             {% endfor %}
         </div>
-    {% endif %} #}
+    {% endif %}
 
 {% endblock %}
