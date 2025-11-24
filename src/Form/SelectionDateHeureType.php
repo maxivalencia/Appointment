@@ -29,21 +29,31 @@ class SelectionDateHeureType extends AbstractType
                 // 'class' => 'datetimePicker',
                 // 'html5' => false,
                 'widget' => 'single_text',
+                'required' => true,
                 'attr' => [
-                    'class' => 'datetimePicker',
+                    // 'class' => 'form-control datetimePicker datepicker js-datepicker',
+                    // 'class' => 'form-control js-datepicker',
+                    'class' => 'form-control',
+                    // 'data-provide' => 'datepicker',
+                    'data-date-format' => 'mm/dd/yyyy',
+                    'placeholder' => 'jj/mm/aaaa',
+                    'autocomplete' => 'off',
                 ],
-                //'data' => new \DateTime('now'),
+                'data' => new \DateTime('now'),
             ])
-            ->add('heureRendezVous', TimeType::class, [
+            /* ->add('heureRendezVous', TimeType::class, [
                 'label' => 'Heure de rendez-vous',
                 // 'class' => 'datetimePicker',
                 // 'html5' => false,
                 'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'datetimePicker',
+                    'class' => 'form-control',
+                    // 'data-provide' => 'datepicker',
+                    'autocomplete' => 'off'
                 ],
                 //'data' => new \DateTime('now'),
-            ])
+                'required' => false,
+            ]) */
             // ->add('confirmation')
             // ->add('dateHeureArriveRendezVous')
             // ->add('dateHeureFinVisite')

@@ -7,3 +7,5 @@ flatpickr(".datetimePicker", {
     time_24hr: true,            // format 24h
     locale: "fr"
 });
+
+

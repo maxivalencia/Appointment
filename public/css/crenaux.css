@@ -35,3 +35,13 @@
 .datetimePicker, .flatpickr-input {
     font-size: 0.95rem;
 }
+
+/* assets/styles/app.css */
+.js-datepicker {
+  max-width: 250px; /* champ plus compact */
+}
+
+.date-badge {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
