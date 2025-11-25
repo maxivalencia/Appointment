@@ -28,6 +28,10 @@
                 <td>{{ rendez_vou.adresse }}</td>
             </tr>
             <tr>
+                <th>Centre d'acceuil pour le visite technique</th>
+                <td>{{ rendez_vou.centre }}</td>
+            </tr>
+            <tr>
                 <th>Date d'enregistrement du Rendez-Vous</th>
                 <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") : '' }}</td>
             </tr>
@@ -37,7 +41,7 @@
             </tr>
             <tr>
                 <th>Heure du Rendez-Vous</th>
-                <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") : '' }}</td>
+                <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i') : '' }}</td>
             </tr>
             <tr>
                 <th>Confirmation du rendez-vous</th>
@@ -52,7 +56,7 @@
                 <td>{{ rendez_vou.codeRendezVous }}</td>
             </tr>
             <tr>
-                <th>
+                <th colspan=2 style="text-align:center;">
                     <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn">Imprimer</a>
                 </th>
             </tr>
