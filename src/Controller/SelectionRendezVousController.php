@@ -132,14 +132,16 @@ final class SelectionRendezVousController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            echo("tonga eto");
+            $code = uniqid();
             $rendezVou->setDatePriseRendezVous(new \DateTime());
-            $rendezVou->setCodeRendezVous(uniqid());
+            $rendezVou->setCodeRendezVous($code);
             $rendezVou->setAnnulationRendezVous(false);
             $entityManager->persist($rendezVou);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_rdv_reserver', [
+                'code' => $code, // obligatoire pour remplir {code}
+            ]);
         }
 
         return $this->render('selection_rendez_vous/remplissage_info.html.twig', [
@@ -147,6 +149,16 @@ final class SelectionRendezVousController extends AbstractController
             'rendez_vou' => $rendezVou,
             'date' => $date,
             'time' => $time,
+        ]);
+    }
+
+    #[Route('/rendez-vous/recapitulation/{code}', name: 'app_recapitulation', methods: ['GET', 'POST'])]
+    public function recapitulation($code, Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    {
+        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code]);
+
+        return $this->render('selection_rendez_vous/recapitulatif.html.twig', [
+            'rendez_vou' => $rendezVou,
         ]);
     }
 }

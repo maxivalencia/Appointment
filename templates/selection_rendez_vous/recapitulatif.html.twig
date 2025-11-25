@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selection Rendez-Vous{% endblock %}
+
+{% block body %}
+    <h1>Rendez-vous enregistrer avec succès</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Immatriculation du véhicule</th>
+                <td>{{ rendez_vou.immatriculation }}</td>
+            </tr>
+            <tr>
+                <th>Propriétaire du véhicule</th>
+                <td>{{ rendez_vou.proprietaire }}</td>
+            </tr>
+            <tr>
+                <th>Contact du propriétaire du véhicule</th>
+                <td>{{ rendez_vou.contact }}</td>
+            </tr>
+            <tr>
+                <th>Mail du propriétaire du véhicule</th>
+                <td>{{ rendez_vou.mail }}</td>
+            </tr>
+            <tr>
+                <th>Adresse du propriétaire du véhicule</th>
+                <td>{{ rendez_vou.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Date d'enregistrement du Rendez-Vous</th>
+                <td>{{ rendez_vou.datePriseRendezVous ? rendez_vou.datePriseRendezVous|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date du Rendez-Vous</th>
+                <td>{{ rendez_vou.dateRendezVous ? rendez_vou.dateRendezVous|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure du Rendez-Vous</th>
+                <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") : '' }}</td>
+            </tr>
+            <tr>
+                <th>Confirmation du rendez-vous</th>
+                <td>{{ rendez_vou.confirmation ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Annulation du Rendez-Vous</th>
+                <td>{{ rendez_vou.annulationRendezVous ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Code du Rendez-Vous</th>
+                <td>{{ rendez_vou.codeRendezVous }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

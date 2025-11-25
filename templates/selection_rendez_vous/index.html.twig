@@ -35,7 +35,7 @@
     <hr>
 
     {% if availableSlots is not empty %}
-        <h3>Créneaux disponibles pour la date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY")}} : </h3>
+        <h3>Créneaux disponibles pour la date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") }} : </h3>
 
         <div class="slots-container">
             {% for slot in availableSlots %}
