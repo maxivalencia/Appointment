@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
+use DateTimeImmutable;
 
 final class SelectionRendezVousController extends AbstractController
 {
@@ -44,10 +45,17 @@ final class SelectionRendezVousController extends AbstractController
             $dateString = $request->request->get('dateRendezVous');
         } else {
             $dateString = $request->query->get('dateRendezVous');
+            //$dateFormater = \DateTime::createFromFormat('d/m/Y', $dateString);
         }
 
         if ($dateString != '' && $dateString != null) {
-            $date = new \DateTime($dateString);
+            //$dateString = '25/11/2025'; // format d/m/Y
+            $parts = explode('/', $dateString); // ['25', '11', '2025']
+            // Réarranger dans l'ordre Y-m-d
+            $dateFormatter = implode('-', array_reverse($parts)); // '2025-11-25'
+            $date = new \DateTime($dateFormatter);
+            /* $class = \DateTime::class;
+            $date = new $class::createFromFormat('d/m/Y', $dateString); */
         } else {
             $date = new \DateTime(date('Y-m-d'));
         }
@@ -78,50 +86,29 @@ final class SelectionRendezVousController extends AbstractController
 
             // Si le nombre est inférieur au max, ajouter le créneau
             if ($count < $nombreVehiculeMaximum->getNombreVehicule()) {
-                $availableSlots[] = $slot;
-            }
-            /* if (!in_array($slot->format('H:i'), $takenTimes)){
-                $availableSlots[] = $slot;
-            } */
-        }
+                //$heureActuelle = (int)(new \DateTime())->format('H:i');
+                //$limite = (int)$dureeLimiteAvantRendezVous->getNombreHeure();
 
-        /* return this->render('selection_rendez_vous/index.html.twig', [
-            'availableSlots' => availableSlots,
-        ]); */
+                $now = new \DateTime();                           // maintenant
+                $limite = $dureeLimiteAvantRendezVous->getNombreHeure();  // ex: 2 h
 
-        /* if ($form->isSubmitted() && $form->isValid()) {
-            //return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
+                // date complète du RDV (date + heure)
+                $rdvDateTime = clone $date;                       // $date contient déjà la date du RDV
+                $rdvDateTime->setTime(substr($heure, 0, 2), substr($heure, 3, 2));
 
-            $date = $form->get('dateRendezVous')->getData() ?? new \DateTime();
-
-            // Génération des créneaux (exemple : 08h00 → 17h00)
-            $start = new \DateTime($date->format('Y-m-d') . ' 08:00');
-            $end   = new \DateTime($date->format('Y-m-d') . ' 17:00');
-
-            $interval = new \DateInterval('PT20M'); // 20 minutes
-            //dump($interval);
-            $slots = [];
-            //for ($time = clone $start; $time <= $end; $time->add($interval)) {
-            for ($time = clone $start; $time < $end; $time->add($interval)) {
-                $slots[] = clone $time;
-            }
-
-            // Récupérer les heures déjà réservées
-            $taken = $rendezVousRepository->findBy(['dateRendezVous' => $date]);
-
-            $takenTimes = array_map(
-                fn($rdv) => $rdv->getHeureRendezVous()->format("H:i"),
-                $taken
-            );
-
-            // Filtrer
-            foreach ($slots as $slot) {
-                if (!in_array($slot->format('H:i'), $takenTimes)) {
-                    $availableSlots[] = $slot;
+                // heure limite = maintenant + limite (ex : maintenant + 2h)
+                $limiteHeure   = (int)$limite->format('H');
+                $limiteMinute  = (int)$limite->format('i');
+                $heureLimite = clone $now;
+                //$heureLimite->modify("+$limite hour");
+                $heureLimite->modify("+{$limiteHeure} hour + {$limiteMinute} minutes");
+                //if($date->format('Y-m-d') === new \DateTime(date('Y-m-d')) && ($heure < $dureeLimiteAvantRendezVous->getNombreHeure())) {
+                if(($date->format('Y-m-d') === (new \DateTime())->format('Y-m-d')) && ($rdvDateTime < $heureLimite)) {
+                    continue;
                 }
+                $availableSlots[] = $slot;
             }
-
-        } */
+        }
 
         return $this->render('selection_rendez_vous/index.html.twig', [
             // 'form' => $form->createView(),
@@ -129,19 +116,37 @@ final class SelectionRendezVousController extends AbstractController
             'rendez_vou' => $rendezVou,
             'availableSlots' => $availableSlots,
             'date' => $date,
+            'jourAffichable' => $nombreJourMaximumRendezVous->getNombreJour(),
         ]);
     }
 
-    #[Route('/rendez-vous/reserver/{date}/{time}', name: 'app_rdv_reserver')]
-    public function reserver($date, $time, EntityManagerInterface $em)
+    #[Route('/rendez-vous/reserver/{date}/{time}', name: 'app_rdv_reserver', methods: ['GET', 'POST'])]
+    public function reserver($date, $time, Request $request, EntityManagerInterface $entityManager)
     {
-        $rdv = new RendezVous();
-        $rdv->setDateRendezVous(new \DateTime($date));
-        $rdv->setHeureRendezVous(new \DateTime($time));
+        $rendezVou = new RendezVous();
+        $rendezVou->setDateRendezVous(new \DateTime($date));
+        $rendezVou->setHeureRendezVous(new \DateTime($time));
+        $form = $this->createForm(SelectionDateHeureType::class, $rendezVou, [
+            'label' => false,
+        ]);
+        $form->handleRequest($request);
 
-        $em->persist($rdv);
-        $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            echo("tonga eto");
+            $rendezVou->setDatePriseRendezVous(new \DateTime());
+            $rendezVou->setCodeRendezVous(uniqid());
+            $rendezVou->setAnnulationRendezVous(false);
+            $entityManager->persist($rendezVou);
+            $entityManager->flush();
 
-        return $this->redirectToRoute('app_rdv_confirm');
+            return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('selection_rendez_vous/remplissage_info.html.twig', [
+            'form' => $form->createView(),
+            'rendez_vou' => $rendezVou,
+            'date' => $date,
+            'time' => $time,
+        ]);
     }
 }

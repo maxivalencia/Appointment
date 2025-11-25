@@ -3,7 +3,7 @@
 {% block title %}Selection Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>Sélectionner un créneau</h1>
+    <h1>Sélectionner la date et l'heure de votre rendez-vous</h1>
 
     {# {{ form_start(form) }}
         {{ form_row(form) }}
@@ -15,12 +15,15 @@
                 <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous :</span>
             </label>
             <input
-                type="date"
+                type="text"
                 id="dateRendezVous"
                 name="dateRendezVous"
                 required
-                class="form-control datepicker"
-                value="{{ date|date('Y-m-d') }}"
+                class="form-control form-control-lg border-primary rounded shadow-sm js-datepicker"
+                {# value="{{ date|date('Y-m-d') }}" #}
+                value="{{ date|date('d/m/Y') }}"
+                autocomplete="off"
+                placeholder="jj/mm/aaaa"
             >
         </div>
 
@@ -44,4 +47,24 @@
         </div>
     {% endif %}
 
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready( function () {
+            // initialisation pour tous les inputs avec .js-datepicker
+            let today = new Date();
+            let endDate = new Date();
+            endDate.setDate(today.getDate() + {{ jourAffichable }});
+            $('.js-datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayHighlight: true,
+                autoclose: true,
+                language: 'fr',
+                startDate: today,
+                endDate: endDate
+            });
+        });
+    </script>
 {% endblock %}

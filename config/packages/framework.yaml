@@ -5,7 +5,7 @@ framework:
         default_path: '%kernel.project_dir%/translations'
         fallbacks: ['fr']
     secret: '%env(APP_SECRET)%'
-
+    # timezone: 'Indian/Antananarivo'
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
