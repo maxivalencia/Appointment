@@ -51,9 +51,12 @@
                 <th>Code du Rendez-Vous</th>
                 <td>{{ rendez_vou.codeRendezVous }}</td>
             </tr>
+            <tr>
+                <th>
+                    <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn">Imprimer</a>
+                </th>
+            </tr>
         </tbody>
     </table>
-
-
 
 {% endblock %}

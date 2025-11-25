@@ -22,3 +22,7 @@ services:
     # Twig\Extra\Intl\IntlExtension:
         # tags: [ 'twig.extension' ]
     # Twig\Extra\Intl\IntlExtension: ~
+    App\Service\PdfService:
+        public: true
+        autowire: true
+        autoconfigure: true

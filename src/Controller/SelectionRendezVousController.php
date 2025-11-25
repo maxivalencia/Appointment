@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use DateTimeImmutable;
+use App\Service\PdfService;
 
 final class SelectionRendezVousController extends AbstractController
 {
@@ -159,6 +160,22 @@ final class SelectionRendezVousController extends AbstractController
 
         return $this->render('selection_rendez_vous/recapitulatif.html.twig', [
             'rendez_vou' => $rendezVou,
+            'code' => $code,
         ]);
+    }
+
+    #[Route('/rendez-vous/imprimable/{code}', name: 'app_generate_pdf')]
+    public function generate($code, Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager, PdfService $pdfService): Response
+    {
+        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code]);
+
+        $html = $this->renderView('selection_rendez_vous/imprimable.html.twig', [
+            'title' => 'Mon PDF',
+            'date' => date('d/m/Y'),
+            'rendez_vou' => $rendezVou,
+        ]);
+
+        // Génération et téléchargement du PDF
+        return $pdfService->generatePdfFromHtml($html, 'mon_document.pdf', true);
     }
 }
