@@ -3,7 +3,7 @@
 {% block title %}Selection Rendez-Vous{% endblock %}
 
 {% block body %}
-    <h1>Veuillez fournir les informations nécessaire pour le rendez-vous</h1>
+    <h1>Veuillez fournir les informations nécessaire pour la consultation de votre rendez-vous</h1>
 
     <form method="get" action="{{ path('app_annulation_rendez_vous') }}">
         <div class="form-group" style="margin-bottom: 15px;">
@@ -14,6 +14,19 @@
                 type="text"
                 id="codeRendezVous"
                 name="codeRendezVous"
+                required
+                class="form-control"
+                autocomplete="off"
+            >
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="immatriculation">
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Immatriculation de votre véhicule :</span>
+            </label>
+            <input
+                type="text"
+                id="immatriculation"
+                name="immatriculation"
                 required
                 class="form-control"
                 autocomplete="off"

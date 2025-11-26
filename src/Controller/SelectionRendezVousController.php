@@ -140,7 +140,7 @@ final class SelectionRendezVousController extends AbstractController
             $entityManager->persist($rendezVou);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_rdv_reserver', [
+            return $this->redirectToRoute('app_recapitulation', [
                 'code' => $code, // obligatoire pour remplir {code}
             ]);
         }
@@ -177,5 +177,59 @@ final class SelectionRendezVousController extends AbstractController
 
         // Génération et téléchargement du PDF
         return $pdfService->generatePdfFromHtml($html, 'mon_document.pdf', true);
+    }
+
+    #[Route('/rendez-vous/consultation', name: 'app_consultation', methods: ['GET', 'POST'])]
+    public function consultation(Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    {
+        $code = $request->request->get('codeRendezVous');
+        $immatriculation = $request->request->get('immatriculation');
+        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code, 'immatriculation' => $immatriculation], ['datePriseRendezVous' => 'DESC']);
+        if ($rendezVou != null){
+            return $this->redirectToRoute('app_recapitulation', [
+                'code' => $rendezVou->getCodeRendezVous(),
+            ]);
+        }
+
+        return $this->render('selection_rendez_vous/consultation.html.twig', [
+        ]);
+    }
+
+    #[Route('/rendez-vous/modification', name: 'app_modification', methods: ['GET', 'POST'])]
+    public function modification(Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    {
+        $code = $request->request->get('codeRendezVous');
+        $immatriculation = $request->request->get('immatriculation');
+        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code, 'immatriculation' => $immatriculation], ['datePriseRendezVous' => 'DESC']);
+
+        // $rendezVou = new RendezVous();
+        // $rendezVou->setDateRendezVous(new \DateTime($date));
+        // $rendezVou->setHeureRendezVous(new \DateTime($time));
+        $form = $this->createForm(SelectionDateHeureType::class, $rendezVou, [
+            'label' => false,
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $code = uniqid();
+            // $rendezVou->setDatePriseRendezVous(new \DateTime());
+            // $rendezVou->setCodeRendezVous($code);
+            //  $rendezVou->setAnnulationRendezVous(false);
+            $entityManager->persist($rendezVou);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_recapitulation', [
+                'code' => $code, // obligatoire pour remplir {code}
+            ]);
+        }
+
+        return $this->render('selection_rendez_vous/modification.html.twig', [
+            'form' => $form->createView(),
+            'rendez_vou' => $rendezVou,
+            'date' => $rendezVou->getDateRendezVous(),
+            'time' => $rendezVou->getHeureRendezVous(),
+        ]);
+        /* return $this->render('selection_rendez_vous/modification.html.twig', [
+        ]); */
     }
 }
