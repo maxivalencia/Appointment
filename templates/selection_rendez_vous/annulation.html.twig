@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selection Rendez-Vous{% endblock %}
+
+{% block body %}
+    <h1>Veuillez fournir les informations nécessaire pour le rendez-vous</h1>
+
+    <form method="get" action="{{ path('app_annulation_rendez_vous') }}">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="codeRendezVous">
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Code de rendez-vous :</span>
+            </label>
+            <input
+                type="text"
+                id="codeRendezVous"
+                name="codeRendezVous"
+                required
+                class="form-control"
+                autocomplete="off"
+            >
+        </div>
+
+        <button type="submit" class="btn-action save">
+            <i class="fa fa-calendar"></i> Annulez le rendez-vous
+        </button>
+    </form>
+
+{% endblock %}

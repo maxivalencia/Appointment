@@ -24,7 +24,7 @@
 
     <a href="{{ path('app_centres_index') }}" class="btn-action back"><i class="fa fa-arrow-left"></i> Retour</a>
 
-    <a href="{{ path('app_centres_edit', {'id': centre.id}) }}">edition</a>
+    <a href="{{ path('app_centres_edit', {'id': centre.id}) }}"><i class="fas fa-edit"></i> edition</a>
 
     {{ include('centres/_delete_form.html.twig') }}
 {% endblock %}

@@ -39,8 +39,12 @@
 
         <div class="slots-container">
             {% for slot in availableSlots %}
+                {# <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
+                class="slot-btn btn-creneaux"> #}
                 <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
-                class="slot-btn">
+                class="btn-creneaux">
+                    <i class="fa-solid fa-clock"></i>
+                    <br>
                     {{ slot|date('H:i') }}
                 </a>
             {% endfor %}

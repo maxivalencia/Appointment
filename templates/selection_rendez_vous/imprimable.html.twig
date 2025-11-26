@@ -53,7 +53,7 @@
                     Fitiavana-Tanindrazana-Fandrosoana
                     <br><br>--------------------------<br><br>
 
-                    {{ rendez_vou.centre }}, le {{ "now"|date('d') }}
+                    {{ rendez_vou.centre|capitalize }}, le {{ "now"|date('d') }}
                     {{ trans_day_hash["now"|date('F')] }}
                     {{ "now"|date('Y') }}
 
@@ -63,9 +63,8 @@
         </table>
 
         <h1 style="text-align: center;">Rendez-vous pour visite technique</h1>
-
         <hr>
-
+        <br><br>
         <table class="table" style="border-collapse: collapse; border: none; width:100%;">
             <tbody style="border:none; width:100%;">
                 <tr>
@@ -118,9 +117,9 @@
                 </tr>
             </tbody>
         </table>
-
+        <br><br>
         <hr>
-
-        <p>Veuillez vous munir de cette pièce au moment de votre rendez-vous</p>
+        <br><br>
+        <p>Veuillez vous munir de cette pièce et de tous les documents nécessaires au véhicule pour le contrôle technique, au moment de votre rendez-vous.<br>Nous vous remercions de votre confiance.</p>
     </body>
 </html>

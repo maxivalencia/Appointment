@@ -7,7 +7,7 @@
 
     {{ form_start(form, { method: 'POST', action: path('app_rdv_reserver', { date: date, time: time }) }) }}
         {{ form_row(form) }}
-        <button type="submit" class="btn-action save"><i class="fa fa-calendar"></i> Valider mes informations</button>
+        <button type="submit" class="btn-action save"><i class="fas fa-save"></i> Valider mes informations</button>
     {{ form_end(form) }}
 
 {% endblock %}
