@@ -122,7 +122,7 @@ final class SelectionRendezVousController extends AbstractController
     }
 
     #[Route('/rendez-vous/reserver/{date}/{time}', name: 'app_rdv_reserver', methods: ['GET', 'POST'])]
-    public function reserver($date, $time, Request $request, EntityManagerInterface $entityManager)
+    public function reserver($date, $time, Request $request, NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository, NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
     {
         $rendezVou = new RendezVous();
         $rendezVou->setDateRendezVous(new \DateTime($date));
@@ -134,11 +134,25 @@ final class SelectionRendezVousController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $code = uniqid();
+            // resultat = $this->nettoyerTexte($texte);
+            // strtoupper($texte);
             $rendezVou->setDatePriseRendezVous(new \DateTime());
             $rendezVou->setCodeRendezVous($code);
             $rendezVou->setAnnulationRendezVous(false);
-            $entityManager->persist($rendezVou);
-            $entityManager->flush();
+            $rendezVou->setImmatriculation(strtoupper($this->nettoyerTexte($rendezVou->getImmatriculation())));
+            $rdvExiste = $rendezVousRepository->findOneBy(['immatriculation' => $rendezVou()->getImmatriculation()]);
+
+            $date = new ('2025-12-10'); // Exemple de date à tester
+            $aujourdhui = new \DateTime(); // Aujourd'hui
+            $nombreJourMaximumRendezVous = $nombreJourMaximumRendezVousRepository->findOneBy([], ['dateApplication' => 'DESC']);
+            // $nombreVehiculeMaximum = $nombreVehiculeMaximumRendezVousRepository->findOneBy([], ['dateApplication' => 'DESC']);
+            $dansJoursMaximum = (clone $aujourdhui)->modify('+' . $nombreJourMaximumRendezVous->getNombreJour() . ' days');
+
+            if ($rdvExiste == null || $rdvExiste->getDateRendezVous() < $aujourdhui || $rdvExiste->getDateRendezVous() > $dansJoursMaximum || ($rdvExiste->isConfirmation() == false && $rdvExiste->isAnnulationRendezVous() == true)) {
+                $entityManager->persist($rendezVou);
+                $entityManager->flush();
+            }
+            // if ($rdvExiste != null && $rdvExiste->getDateRendezVous() >= $aujourdhui && $rdvExiste->getDateRendezVous() <= $dansJoursMaximum)
 
             return $this->redirectToRoute('app_recapitulation', [
                 'code' => $code, // obligatoire pour remplir {code}
@@ -177,6 +191,21 @@ final class SelectionRendezVousController extends AbstractController
 
         // Génération et téléchargement du PDF
         return $pdfService->generatePdfFromHtml($html, 'mon_document.pdf', true);
+    }
+
+    #[Route('/rendez-vous/annulation/{code}', name: 'app_annulation', methods: ['GET', 'POST'])]
+    public function annulation($code, Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    {
+        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code]);
+        $rendezVou->setAnnulationRendezVous(true);
+        $rendezVou->setConfirmation(false);
+        $entityManager->persist($rendezVou);
+        $entityManager->flush();
+
+        return $this->render('selection_rendez_vous/recapitulatif.html.twig', [
+            'rendez_vou' => $rendezVou,
+            'code' => $code,
+        ]);
     }
 
     #[Route('/rendez-vous/consultation', name: 'app_consultation', methods: ['GET', 'POST'])]
@@ -231,5 +260,14 @@ final class SelectionRendezVousController extends AbstractController
         ]);
         /* return $this->render('selection_rendez_vous/modification.html.twig', [
         ]); */
+    }
+
+    public function nettoyerTexte(string $texte): string {
+
+        // Supprimer tous les caractères non-alphanumériques (hors lettres/chiffres)
+        // et les espaces
+        $texteNettoye = preg_replace('/[^a-zA-Z0-9]/', '', $texte);
+
+        return $texteNettoye;
     }
 }

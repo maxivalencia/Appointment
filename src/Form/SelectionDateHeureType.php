@@ -14,30 +14,62 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SelectionDateHeureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $sexe = [
+            'Je serais au rendez-vous' => true,
+            'Je ne serais pas au rendez-vous' => false
+        ];
         $builder
             ->add('immatriculation', TextType::class,[
                 'label' => "Veuillez saisir l'immatricutaion de votre véhiciule",
+                'attr' => [
+                    'placeholder' => 'Veuillez ajouter içi un numéro d\'immatriculation malagasy uniquement',
+                ],
                 'required' => true,
             ])
             ->add('proprietaire', TextType::class,[
                 'label' => "Veuillez saisir votre nom et prénom",
+                'attr' => [
+                    'placeholder' => 'Veuillez ajouter içi votre nom et votre prénom',
+                ],
                 'required' => true,
             ])
-            ->add('contact', TextType::class,[
+            ->add('contact', TelType::class,[
                 'label' => "Veuillez saisir numéro de téléphone",
+                'attr' => [
+                    'placeholder' => 'e.g., +261 (0) 3X XX XXX XX',
+                ],
                 'required' => true,
             ])
-            ->add('mail', TextType::class,[
+            ->add('mail', EmailType::class,[
                 'label' => "Veuillez saisir votre e-mail",
+                'attr' => [
+                    'placeholder' => 'e.g., exemple@exemple.mg',
+                ],
+                'constraints' => [
+                    new Email([
+                        'message' => 'L\'adresse email "{{ value }}" n\'est pas une adresse email valide.',
+                        // You can specify the validation mode:
+                        // 'mode' => 'html5', // Uses HTML5 regex, enforces TLD (default)
+                        // 'mode' => 'html5-allow-no-tld', // HTML5 regex, allows no TLD
+                        // 'mode' => 'strict', // RFC 5322 validation (requires egulias/email-validator)
+                    ]),
+                ],
                 'required' => false,
             ])
             ->add('adresse', TextType::class,[
                 'label' => "Veuillez saisir votre adresse",
+                'attr' => [
+                    'placeholder' => 'veuillez ajouter votre adresse içi',
+                ],
                 'required' => true,
             ])
             // ->add('datePriseRendezVous')
@@ -79,8 +111,10 @@ class SelectionDateHeureType extends AbstractType
                 'required' => true,
                 'disabled' => true,
             ])
-            ->add('confirmation', CheckboxType::class,[
+            ->add('confirmation', ChoiceType::class,[
+                'data' => false,
                 'label' => "Veuillez confirmer votre rendez-vous",
+                'choices' => $sexe,
                 'required' => true,
             ])
             // ->add('dateHeureArriveRendezVous')

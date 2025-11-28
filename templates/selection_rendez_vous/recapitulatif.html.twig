@@ -58,8 +58,8 @@
             <tr>
                 <th colspan=2 style="text-align:center;">
                     <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fa-solid fa-print"></i> Imprimer</a>
-                    <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fas fa-edit"></i> Modifier</a>
-                    <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fa fa-trash" aria-hidden="true"></i> Annuler</a>
+                    <a href="{{ path('app_modification', { code: code }) }}" class="slot-btn"><i class="fas fa-edit"></i> Modifier</a>
+                    <a href="{{ path('app_annulation', { code: code }) }}" class="slot-btn"><i class="fa fa-trash" aria-hidden="true"></i> Annuler</a>
                     {# <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fas fa-search"></i> Consultation</a> #}
                 </th>
             </tr>
