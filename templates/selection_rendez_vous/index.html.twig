@@ -12,7 +12,7 @@
     <form method="get" action="{{ path('app_selection_rendez_vous') }}">
         <div class="form-group" style="margin-bottom: 15px;">
             <label for="dateRendezVous">
-                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous :</span>
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous souhaiter :</span>
             </label>
             <input
                 type="text"
@@ -41,7 +41,7 @@
             {% for slot in availableSlots %}
                 {# <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
                 class="slot-btn btn-creneaux"> #}
-                <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
+                <a href="{{ path('app_rdv_reserver_submitted', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
                 class="btn-creneaux">
                     <i class="fa-solid fa-clock"></i>
                     <br>

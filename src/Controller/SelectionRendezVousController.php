@@ -122,7 +122,14 @@ final class SelectionRendezVousController extends AbstractController
     }
 
     #[Route('/rendez-vous/reserver/{date}/{time}', name: 'app_rdv_reserver', methods: ['GET', 'POST'])]
-    public function reserver($date, $time, Request $request, NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository, NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    public function reserver(
+        $date,
+        $time,
+        Request $request,
+        NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository,
+        NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository,
+        RendezVousRepository $rendezVousRepository,
+        EntityManagerInterface $entityManager)
     {
         $rendezVou = new RendezVous();
         $rendezVou->setDateRendezVous(new \DateTime($date));
@@ -132,23 +139,38 @@ final class SelectionRendezVousController extends AbstractController
         ]);
         $form->handleRequest($request);
 
+        /* if ($form->isSubmitted() && $form->isValid()) { */
         if ($form->isSubmitted() && $form->isValid()) {
+            // $rendezVou = $request->query->all(); // ou $form->getData()
+            // $rendezVou = $form->getData();
+
             $code = uniqid();
             // resultat = $this->nettoyerTexte($texte);
             // strtoupper($texte);
             $rendezVou->setDatePriseRendezVous(new \DateTime());
             $rendezVou->setCodeRendezVous($code);
             $rendezVou->setAnnulationRendezVous(false);
-            $rendezVou->setImmatriculation(strtoupper($this->nettoyerTexte($rendezVou->getImmatriculation())));
-            $rdvExiste = $rendezVousRepository->findOneBy(['immatriculation' => $rendezVou()->getImmatriculation()]);
+            $rendezVou->setImmatriculation(
+                strtoupper($this->nettoyerTexte($rendezVou->getImmatriculation()))
+            );
+            $rdvExiste = $rendezVousRepository->findOneBy([
+                'immatriculation' => $rendezVou->getImmatriculation()
+            ]);
 
-            $date = new ('2025-12-10'); // Exemple de date à tester
+            // $date = new ('2025-12-10'); // Exemple de date à tester
             $aujourdhui = new \DateTime(); // Aujourd'hui
-            $nombreJourMaximumRendezVous = $nombreJourMaximumRendezVousRepository->findOneBy([], ['dateApplication' => 'DESC']);
+            $nombreJourMaximumRendezVous = $nombreJourMaximumRendezVousRepository
+                ->findOneBy([], ['dateApplication' => 'DESC']);
             // $nombreVehiculeMaximum = $nombreVehiculeMaximumRendezVousRepository->findOneBy([], ['dateApplication' => 'DESC']);
-            $dansJoursMaximum = (clone $aujourdhui)->modify('+' . $nombreJourMaximumRendezVous->getNombreJour() . ' days');
+            $dansJoursMaximum = (clone $aujourdhui)
+                ->modify('+' . $nombreJourMaximumRendezVous->getNombreJour() . ' days');
 
-            if ($rdvExiste == null || $rdvExiste->getDateRendezVous() < $aujourdhui || $rdvExiste->getDateRendezVous() > $dansJoursMaximum || ($rdvExiste->isConfirmation() == false && $rdvExiste->isAnnulationRendezVous() == true)) {
+            if (
+                $rdvExiste == null ||
+                $rdvExiste->getDateRendezVous() < $aujourdhui ||
+                $rdvExiste->getDateRendezVous() > $dansJoursMaximum ||
+                ($rdvExiste->isConfirmation() == false && $rdvExiste->isAnnulationRendezVous() == true)
+            ) {
                 $entityManager->persist($rendezVou);
                 $entityManager->flush();
             }
@@ -164,6 +186,87 @@ final class SelectionRendezVousController extends AbstractController
             'rendez_vou' => $rendezVou,
             'date' => $date,
             'time' => $time,
+        ]);
+    }
+
+    #[Route('/rendez-vous/reserversubmitted', name: 'app_rdv_reserver_submitted', methods: ['GET', 'POST'])]
+    public function reserverSubmitted(
+        Request $request,
+        NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository,
+        NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository,
+        RendezVousRepository $rendezVousRepository,
+        EntityManagerInterface $entityManager)
+    {
+        //dump($request);
+        $date = "";
+        $time = "";
+        if ($request->query->has('date')) {
+            $date = $request->query->get('date');
+        }
+        if ($request->query->has('time')) {
+            $time = $request->query->get('time');
+        }
+        $rendezVou = new RendezVous();
+        if ($date != ""){
+            $rendezVou->setDateRendezVous(new \DateTime($date));
+        }
+        if ($time != ""){
+            $rendezVou->setHeureRendezVous(new \DateTime($time));
+        }
+        $form = $this->createForm(SelectionDateHeureType::class, $rendezVou, [
+            'label' => false,
+        ]);
+        $form->handleRequest($request);
+        //echo($time);
+
+        /* if ($form->isSubmitted() && $form->isValid()) { */
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $rendezVou = $request->query->all(); // ou $form->getData()
+            // $rendezVou = $form->getData();
+            echo("tonga eto");
+
+            $code = uniqid();
+            // resultat = $this->nettoyerTexte($texte);
+            // strtoupper($texte);
+            $rendezVou->setDatePriseRendezVous(new \DateTime());
+            $rendezVou->setCodeRendezVous($code);
+            $rendezVou->setAnnulationRendezVous(false);
+            $rendezVou->setImmatriculation(
+                strtoupper($this->nettoyerTexte($rendezVou->getImmatriculation()))
+            );
+            $rdvExiste = $rendezVousRepository->findOneBy([
+                'immatriculation' => $rendezVou->getImmatriculation()
+            ]);
+
+            // $date = new ('2025-12-10'); // Exemple de date à tester
+            $aujourdhui = new \DateTime(); // Aujourd'hui
+            $nombreJourMaximumRendezVous = $nombreJourMaximumRendezVousRepository
+                ->findOneBy([], ['dateApplication' => 'DESC']);
+            // $nombreVehiculeMaximum = $nombreVehiculeMaximumRendezVousRepository->findOneBy([], ['dateApplication' => 'DESC']);
+            $dansJoursMaximum = (clone $aujourdhui)
+                ->modify('+' . $nombreJourMaximumRendezVous->getNombreJour() . ' days');
+
+            if (
+                $rdvExiste == null ||
+                $rdvExiste->getDateRendezVous() < $aujourdhui ||
+                $rdvExiste->getDateRendezVous() > $dansJoursMaximum ||
+                ($rdvExiste->isConfirmation() == false && $rdvExiste->isAnnulationRendezVous() == true)
+            ) {
+                $entityManager->persist($rendezVou);
+                $entityManager->flush();
+            }
+            // if ($rdvExiste != null && $rdvExiste->getDateRendezVous() >= $aujourdhui && $rdvExiste->getDateRendezVous() <= $dansJoursMaximum)
+
+            return $this->redirectToRoute('app_recapitulation', [
+                'code' => $code, // obligatoire pour remplir {code}
+            ]);
+        }
+
+        return $this->render('selection_rendez_vous/remplissage_info.html.twig', [
+            'form' => $form->createView(),
+            'rendez_vou' => $rendezVou,
+            'date' => $rendezVou->getDateRendezVous(),
+            'time' => $rendezVou->getHeureRendezVous(),
         ]);
     }
 

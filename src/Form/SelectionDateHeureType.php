@@ -96,6 +96,7 @@ class SelectionDateHeureType extends AbstractType
                     'autocomplete' => 'off',
                 ],
                 // 'data' => new \DateTime('now'),
+                // 'mapped' => false,
             ])
             ->add('heureRendezVous', TimeType::class, [
                 'label' => 'Heure de rendez-vous',
@@ -110,6 +111,7 @@ class SelectionDateHeureType extends AbstractType
                 //'data' => new \DateTime('now'),
                 'required' => true,
                 'disabled' => true,
+                // 'mapped' => false,
             ])
             ->add('confirmation', ChoiceType::class,[
                 'data' => false,
