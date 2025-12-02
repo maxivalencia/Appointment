@@ -9,7 +9,14 @@
     </head>
 
     <body>
-        {% block body %}{% endblock %}
+        <div class="page-container">
+                {% include 'mise_en_forme/entete.html.twig' %}
+                <main class="content">
+                    <!-- Ton contenu ici -->
+                    {% block body %}{% endblock %}
+                </main>
+                {% include 'mise_en_forme/pied.html.twig' %}
+        </div>
     </body>
         {% include 'mise_en_forme/js.html.twig' %}
         {% block javascripts %}{% endblock %}

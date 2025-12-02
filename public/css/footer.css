@@ -1,0 +1,20 @@
+.pied {
+    /* background: #f3f5f7; */
+    /* margin-left: auto;
+    margin-right: auto; */
+   /*  margin-top: 100px; */
+    /* padding: 20px 1rem; */
+    /* transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -webkit-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease; */
+    /* width: calc(100% - 240px); */
+    border-top: 1px solid #000000;
+    font-size: calc(0.875rem - 0.05rem);
+    /* font-size: 12px; */
+    display: block;
+    /* align: center; */
+    text-align: center;
+    width: 100;
+    padding: 10px;
+}
