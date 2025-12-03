@@ -120,7 +120,7 @@ final class SelectionRendezVousController extends AbstractController
             'jourAffichable' => $nombreJourMaximumRendezVous->getNombreJour(),
         ]);
     }
-
+    // ito fonction ambony tsy dia miasa fa navela eto fotsiny aloha
     #[Route('/rendez-vous/reserver/{date}/{time}', name: 'app_rdv_reserver', methods: ['GET', 'POST'])]
     public function reserver(
         $date,
@@ -327,13 +327,23 @@ final class SelectionRendezVousController extends AbstractController
         ]);
     }
 
-    #[Route('/rendez-vous/modification', name: 'app_modification', methods: ['GET', 'POST'])]
-    public function modification(Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
+    #[Route('/rendez-vous/modification/{id}', name: 'app_modification', methods: ['GET', 'POST'])]
+    public function modification(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
     {
-        $code = $request->request->get('codeRendezVous');
-        $immatriculation = $request->request->get('immatriculation');
-        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code, 'immatriculation' => $immatriculation], ['datePriseRendezVous' => 'DESC']);
+        $code = '';
+        //$rendezVou = new RendezVous();
 
+        $code = $request->query->get('code');
+        $immatriculation = $request->query->get('immatriculation');
+        /* if ($code != '') {
+            $rendezVou = $rendezVousRepository->findOneBy([
+                //'codeRendezVous' => '692fd7ede24f7',
+                'codeRendezVous' => $code,
+                'immatriculation' => $immatriculation
+            ], [
+                'datePriseRendezVous' => 'DESC'
+            ]);
+        } */
         // $rendezVou = new RendezVous();
         // $rendezVou->setDateRendezVous(new \DateTime($date));
         // $rendezVou->setHeureRendezVous(new \DateTime($time));
@@ -347,19 +357,20 @@ final class SelectionRendezVousController extends AbstractController
             // $rendezVou->setDatePriseRendezVous(new \DateTime());
             // $rendezVou->setCodeRendezVous($code);
             //  $rendezVou->setAnnulationRendezVous(false);
-            $entityManager->persist($rendezVou);
+            $code = $rendezVou->getCodeRendezVous();
+            // $entityManager->persist($rendezVou);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_recapitulation', [
-                'code' => $code, // obligatoire pour remplir {code}
+                'code' => $rendezVou->getCodeRendezVous(), // obligatoire pour remplir {code}
             ]);
         }
 
         return $this->render('selection_rendez_vous/modification.html.twig', [
             'form' => $form->createView(),
             'rendez_vou' => $rendezVou,
-            'date' => $rendezVou->getDateRendezVous(),
-            'time' => $rendezVou->getHeureRendezVous(),
+            //'date' => $rendezVou->getDateRendezVous(),
+            //'time' => $rendezVou->getHeureRendezVous(),
         ]);
         /* return $this->render('selection_rendez_vous/modification.html.twig', [
         ]); */

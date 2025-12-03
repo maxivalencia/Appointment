@@ -44,11 +44,11 @@
                 <td>{{ rendez_vou.heureRendezVous ? rendez_vou.heureRendezVous|date('H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>Confirmation du rendez-vous</th>
+                <th>Rendez-vous confirmer</th>
                 <td>{{ rendez_vou.confirmation ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
-                <th>Annulation du Rendez-Vous</th>
+                <th>Rendez-Vous annulez</th>
                 <td>{{ rendez_vou.annulationRendezVous ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
@@ -57,9 +57,17 @@
             </tr>
             <tr>
                 <th colspan=2 style="text-align:center;">
-                    <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fa-solid fa-print"></i> Imprimer</a>
-                    <a href="{{ path('app_modification', { code: code }) }}" class="slot-btn"><i class="fas fa-edit"></i> Modifier</a>
-                    <a href="{{ path('app_annulation', { code: code }) }}" class="slot-btn"><i class="fa fa-trash" aria-hidden="true"></i> Annuler</a>
+                    <a href="{{ path('app_generate_pdf', { 'code': code }) }}" class="slot-btn"><i class="fa-solid fa-print"></i> Imprimer</a>
+                    {# {% if rendez_vou.confirmation %} #}
+                        <a href="{{ path('app_modification', { 'id': rendez_vou.id }) }}"
+                            class="slot-btn">
+                            <i class="fas fa-edit"></i> Modifier</a>
+                        <a href="{{ path('app_annulation', { 'code': code }) }}"
+                            class="slot-btn"
+                            onclick="return confirm('Êtes-vous sûr de vouloir annuler ce rendez-vous ?');">
+                            <i class="fa fa-trash" aria-hidden="true"></i> Annuler
+                        </a>
+                    {# {% endif %} #}
                     {# <a href="{{ path('app_generate_pdf', { code: code }) }}" class="slot-btn"><i class="fas fa-search"></i> Consultation</a> #}
                 </th>
             </tr>

@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Veuillez modifier les informations de votre rendez-vous</h1>
 
-    {{ form_start(form, { method: 'POST', action: path('app_rdv_reserver', { date: date, time: time }) }) }}
+    {{ form_start(form) }}
         {{ form_row(form) }}
         <button type="submit" class="btn-action save"><i class="fas fa-save"></i> Valider mes nouvelles informations</button>
     {{ form_end(form) }}

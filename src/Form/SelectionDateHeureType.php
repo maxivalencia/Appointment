@@ -24,8 +24,8 @@ class SelectionDateHeureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $sexe = [
+            'Je ne serais pas au rendez-vous' => false,
             'Je serais au rendez-vous' => true,
-            'Je ne serais pas au rendez-vous' => false
         ];
         $builder
             ->add('immatriculation', TextType::class,[
@@ -60,7 +60,7 @@ class SelectionDateHeureType extends AbstractType
                         // You can specify the validation mode:
                         // 'mode' => 'html5', // Uses HTML5 regex, enforces TLD (default)
                         // 'mode' => 'html5-allow-no-tld', // HTML5 regex, allows no TLD
-                        // 'mode' => 'strict', // RFC 5322 validation (requires egulias/email-validator)
+                        'mode' => 'strict', // RFC 5322 validation (requires egulias/email-validator)
                     ]),
                 ],
                 'required' => false,
@@ -114,7 +114,7 @@ class SelectionDateHeureType extends AbstractType
                 // 'mapped' => false,
             ])
             ->add('confirmation', ChoiceType::class,[
-                'data' => false,
+                //'data' => false,
                 'label' => "Veuillez confirmer votre rendez-vous",
                 'choices' => $sexe,
                 'required' => true,
