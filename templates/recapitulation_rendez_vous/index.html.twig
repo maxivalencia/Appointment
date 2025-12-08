@@ -1,20 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RecapitulationRendezVousController!{% endblock %}
+{% block title %}Les Rendez-Vous selectionner{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Sélectionner la date et l'heure de votre rendez-vous</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# {{ form_start(form) }}
+        {{ form_row(form) }}
+        <button type="submit" class="btn-action save"><i class="fa fa-calendar"></i> Afficher les heures</button>
+    {{ form_end(form) }} #}
+    <form method="get" action="{{ path('app_selection_rendez_vous') }}">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="dateRendezVous">
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous souhaiter :</span>
+            </label>
+            <input
+                type="text"
+                id="dateRendezVous"
+                name="dateRendezVous"
+                required
+                class="form-control form-control-lg border-primary rounded shadow-sm js-datepicker"
+                {# value="{{ date|date('Y-m-d') }}" #}
+                value="{{ date|date('d/m/Y') }}"
+                autocomplete="off"
+                placeholder="jj/mm/aaaa"
+            >
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/dgsr/Appointment/src/Controller/RecapitulationRendezVousController.php</code></li>
-        <li>Your template at <code>/home/dgsr/Appointment/templates/recapitulation_rendez_vous/index.html.twig</code></li>
-    </ul>
-</div>
+        <button type="submit" class="btn-action save">
+            <i class="fa fa-calendar"></i> Afficher les heures disponibles
+        </button>
+    </form>
+
+    <hr>
+
+    {% if availableSlots is not empty %}
+        <h3>Créneaux disponibles pour la date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") }} : </h3>
+
+        <div class="slots-container">
+            {% for slot in availableSlots %}
+                {# <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}" app_rdv_reserver_submitted ou app_rdv_reserver
+                class="slot-btn btn-creneaux"> #}
+                <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
+                class="btn-creneaux">
+                    <i class="fa-solid fa-clock"></i>
+                    <br>
+                    {{ slot|date('H:i') }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready( function () {
+            // initialisation pour tous les inputs avec .js-datepicker
+            let today = new Date();
+            let endDate = new Date();
+            endDate.setDate(today.getDate() + {{ jourAffichable }});
+            $('.js-datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayHighlight: true,
+                autoclose: true,
+                language: 'fr',
+                startDate: today,
+                endDate: endDate
+            });
+        });
+    </script>
 {% endblock %}
