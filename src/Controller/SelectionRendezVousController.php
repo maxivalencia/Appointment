@@ -314,15 +314,19 @@ final class SelectionRendezVousController extends AbstractController
     #[Route('/rendez-vous/consultation', name: 'app_consultation', methods: ['GET', 'POST'])]
     public function consultation(Request $request, RendezVousRepository $rendezVousRepository, EntityManagerInterface $entityManager)
     {
+        $rendezVou = new RendezVous();
+        $code = '';
+        $immatriculation = '';
         $code = $request->request->get('codeRendezVous');
         $immatriculation = $request->request->get('immatriculation');
-        $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code, 'immatriculation' => $immatriculation], ['datePriseRendezVous' => 'DESC']);
-        if ($rendezVou != null){
-            return $this->redirectToRoute('app_recapitulation', [
-                'code' => $rendezVou->getCodeRendezVous(),
-            ]);
+        if ($code != '' && $immatriculation != '') {
+            $rendezVou = $rendezVousRepository->findOneBy(['codeRendezVous' => $code, 'immatriculation' => $immatriculation], ['datePriseRendezVous' => 'DESC']);
+            if ($rendezVou != null && $rendezVou->getId() > 0){
+                return $this->redirectToRoute('app_recapitulation', [
+                    'code' => $rendezVou->getCodeRendezVous(),
+                ]);
+            }
         }
-
         return $this->render('selection_rendez_vous/consultation.html.twig', [
         ]);
     }

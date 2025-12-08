@@ -9,7 +9,22 @@
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
             table, th, td { border: 1px solid black; }
             th, td { padding: 5px; text-align: left; }
+            @page {
+                margin: 20mm 10mm 30mm 10mm; /* espace en bas pour le pied de page */
+            }
+
+            .footer {
+                position: fixed;
+                bottom: -20px;
+                left: 0;
+                right: 0;
+                height: 30px;
+                text-align: center;
+                font-size: 10px;
+                color: #555;
+            }
         </style>
+
     </head>
     <body>
         <table style="font-size:12px; border-collapse: collapse; border: none; width:100%; text-align:center;">
@@ -121,5 +136,9 @@
         <hr>
         <br><br>
         <p>Veuillez vous munir de cette pièce et de tous les documents nécessaires au véhicule pour le contrôle technique, au moment de votre rendez-vous.<br>Nous vous remercions de votre confiance.</p>
+
+        <div class="footer">
+            Direction Générale Sécurité Routière - Nif : 4001089525 - Stat 71102 11 2006 0 04319.
+        </div>
     </body>
 </html>
