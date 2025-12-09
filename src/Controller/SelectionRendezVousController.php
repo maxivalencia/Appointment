@@ -23,7 +23,16 @@ use App\Service\PdfService;
 final class SelectionRendezVousController extends AbstractController
 {
     #[Route('/selection/rendez/vous', name: 'app_selection_rendez_vous', methods: ['GET', 'POST'])]
-    public function index(Request $request, DureeLimiteAvantRendezVousRepository $dureeLimiteAvantRendezVousRepository, NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository, NombreRendezVousParHeureRepository $nombreRendezVousParHeureRepository, NombreModificationMaximumRepository $nombreModificationMaximumRepository, NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository, EntityManagerInterface $entityManager, RendezVousRepository $rendezVousRepository, PaginatorInterface $paginator): Response
+    public function index(
+        Request $request,
+        DureeLimiteAvantRendezVousRepository $dureeLimiteAvantRendezVousRepository,
+        NombreJourMaximumRendezVousRepository $nombreJourMaximumRendezVousRepository,
+        NombreRendezVousParHeureRepository $nombreRendezVousParHeureRepository,
+        NombreModificationMaximumRepository $nombreModificationMaximumRepository,
+        NombreVehiculeMaximumRendezVousRepository $nombreVehiculeMaximumRendezVousRepository,
+        EntityManagerInterface $entityManager,
+        RendezVousRepository $rendezVousRepository,
+        PaginatorInterface $paginator): Response
     {
         $rendezVou = new RendezVous();
         $form = $this->createForm(SelectionDateHeureType::class, $rendezVou);

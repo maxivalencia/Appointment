@@ -3,16 +3,16 @@
 {% block title %}Les Rendez-Vous selectionner{% endblock %}
 
 {% block body %}
-    <h1>Sélectionner la date et l'heure de votre rendez-vous</h1>
+    <h1>Sélectionner la date et l'heure de rendez-vous</h1>
 
     {# {{ form_start(form) }}
         {{ form_row(form) }}
         <button type="submit" class="btn-action save"><i class="fa fa-calendar"></i> Afficher les heures</button>
     {{ form_end(form) }} #}
-    <form method="get" action="{{ path('app_selection_rendez_vous') }}">
+    <form method="get" action="{{ path('app_liste_rendez_vous') }}">
         <div class="form-group" style="margin-bottom: 15px;">
             <label for="dateRendezVous">
-                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous souhaiter :</span>
+                <span style="font-size: 16px;font-weight: bold; margin-bottom: 5px;">Date de rendez-vous à visionner :</span>
             </label>
             <input
                 type="text"
@@ -35,17 +35,20 @@
     <hr>
 
     {% if availableSlots is not empty %}
-        <h3>Créneaux disponibles pour la date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") }} : </h3>
+        <h3>Les réservations en date du {{ date|format_datetime('full', locale='fr', pattern="EEEE dd MMMM YYYY") }} : </h3>
 
         <div class="slots-container">
             {% for slot in availableSlots %}
                 {# <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}" app_rdv_reserver_submitted ou app_rdv_reserver
                 class="slot-btn btn-creneaux"> #}
-                <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}"
+                {# <a href="{{ path('app_rdv_reserver', { date: slot|date('Y-m-d'), time: slot|date('H:i') }) }}" #}
+                <a href="#"
                 class="btn-creneaux">
                     <i class="fa-solid fa-clock"></i>
                     <br>
-                    {{ slot|date('H:i') }}
+                    {{ slot.heureRendezVous|date('H:i') }}
+                    <br>
+                    {{ slot.immatriculation }}
                 </a>
             {% endfor %}
         </div>
