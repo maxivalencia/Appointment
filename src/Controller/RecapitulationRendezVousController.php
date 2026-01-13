@@ -122,7 +122,7 @@ final class RecapitulationRendezVousController extends AbstractController
                 if(($date->format('Y-m-d') === (new \DateTime())->format('Y-m-d')) && ($rdvDateTime < $heureLimite)) {
                     continue;
                 }
-                 $availableSlots[] = $slot;
+                $availableSlots[] = $slot;
             }
         } */
         $availableSlots = $taken;
