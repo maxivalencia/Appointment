@@ -13,7 +13,7 @@ use App\Entity\NombreVehiculeMaximumRendezVous;
 use App\Entity\OuvertureSamedi;
 use App\Entity\Provinces;
 use App\Entity\RendezVous;
-// use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
