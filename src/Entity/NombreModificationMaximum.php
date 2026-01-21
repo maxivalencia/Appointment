@@ -48,4 +48,13 @@ class NombreModificationMaximum
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+    public function __toString(): string
+    {
+        return $this->getNombreModification();
+    }
 }

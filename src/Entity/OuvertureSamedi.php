@@ -93,4 +93,13 @@ class OuvertureSamedi
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+    public function __toString(): string
+    {
+        return $this->getDateDebut().' au '.$this->getDateFin().' de '.$this->getHeureDebut().' à '.$this->getHeureFin();
+    }
 }

@@ -48,4 +48,13 @@ class DureeLimiteAvantRendezVous
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+    public function __toString(): string
+    {
+        return $this->getNombreHeure()->format('d/m/Y H:i:s');
+    }
 }
