@@ -234,7 +234,7 @@ final class SelectionRendezVousController extends AbstractController
             // $rendezVou = $form->getData();
             echo("tonga eto");
 
-            $code = uniqid();
+            $code = strtoupper(uniqid());
             // resultat = $this->nettoyerTexte($texte);
             // strtoupper($texte);
             $rendezVou->setDatePriseRendezVous(new \DateTime());
@@ -390,7 +390,6 @@ final class SelectionRendezVousController extends AbstractController
     }
 
     public function nettoyerTexte(string $texte): string {
-
         // Supprimer tous les caractères non-alphanumériques (hors lettres/chiffres)
         // et les espaces
         $texteNettoye = preg_replace('/[^a-zA-Z0-9]/', '', $texte);

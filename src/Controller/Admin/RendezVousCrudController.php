@@ -64,6 +64,7 @@ class RendezVousCrudController extends AbstractCrudController
                 'centre'
             ])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

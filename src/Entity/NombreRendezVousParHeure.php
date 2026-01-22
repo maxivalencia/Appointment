@@ -55,6 +55,6 @@ class NombreRendezVousParHeure
     */
     public function __toString(): string
     {
-        return $this->getNombreRendezVous();
+        return strtoupper($this->getNombreRendezVous());
     }
 }

@@ -42,6 +42,7 @@ class NombreVehiculeMaximumRendezVousCrudController extends AbstractCrudControll
             ->setEntityLabelInPlural('Nombres des véhicules maximums par rendez-vous')
             ->setSearchFields(['id', 'nombreVehicule', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

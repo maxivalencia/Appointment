@@ -42,6 +42,7 @@ class HistoriqueRendezVousCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Historiques des rendez-vous')
             ->setSearchFields(['id', 'rendezVous'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

@@ -42,6 +42,7 @@ class NombreRendezVousParHeureCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Nombres des rendez-vous par heure')
             ->setSearchFields(['id', 'nombreRendezVous', 'dataApplication'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

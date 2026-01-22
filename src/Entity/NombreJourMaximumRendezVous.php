@@ -55,6 +55,6 @@ class NombreJourMaximumRendezVous
     */
     public function __toString(): string
     {
-        return $this->getNombreJour();
+        return strtoupper($this->getNombreJour());
     }
 }

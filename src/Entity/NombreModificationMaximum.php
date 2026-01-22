@@ -55,6 +55,6 @@ class NombreModificationMaximum
     */
     public function __toString(): string
     {
-        return $this->getNombreModification();
+        return strtoupper($this->getNombreModification());
     }
 }

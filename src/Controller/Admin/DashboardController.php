@@ -73,64 +73,26 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Appointment');
+            ->setTitle('Appointment')
+            ->setFaviconPath('images/logo_dgsr.png')
+        ;
     }
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         // yield MenuItem::linkToRoute('The Label', 'fas fa-list', 'homepage');
-        yield MenuItem::linkToCrud('Centres', 'fas fa-list', Centres::class);
-        yield MenuItem::linkToCrud('Durée limite avant rendez-vous', 'fas fa-list', DureeLimiteAvantRendezVous::class);
-        yield MenuItem::linkToCrud('Historiques des rendez-vous', 'fas fa-list', HistoriqueRendezVous::class);
-        yield MenuItem::linkToCrud('Jours spéciale', 'fas fa-list', JourSpeciale::class);
-        yield MenuItem::linkToCrud('Nombre jour maximum', 'fas fa-list', NombreJourMaximumRendezVous::class);
-        yield MenuItem::linkToCrud('Nombre modification maximum', 'fas fa-list', NombreModificationMaximum::class);
-        yield MenuItem::linkToCrud('Nombre rendez-vous par heure', 'fas fa-list', NombreRendezVousParHeure::class);
-        yield MenuItem::linkToCrud('Nombre véhicule par rendez-vous', 'fas fa-list', NombreVehiculeMaximumRendezVous::class);
-        yield MenuItem::linkToCrud('Ouverture samedi', 'fas fa-list', OuvertureSamedi::class);
-        yield MenuItem::linkToCrud('Provinces', 'fas fa-list', Provinces::class);
-        yield MenuItem::linkToCrud('Rendez-vous', 'fas fa-list', RendezVous::class);
+        yield MenuItem::linkToCrud('Centres', 'fab fa-centercode', Centres::class);
+        yield MenuItem::linkToCrud('Durée limite avant rendez-vous', 'fas fa-times-circle', DureeLimiteAvantRendezVous::class);
+        yield MenuItem::linkToCrud('Historiques des rendez-vous', 'fas fa-history', HistoriqueRendezVous::class);
+        yield MenuItem::linkToCrud('Jours spéciale', 'fas fa-calendar-day', JourSpeciale::class);
+        yield MenuItem::linkToCrud('Nombre jour maximum', 'far fa-calendar-times', NombreJourMaximumRendezVous::class);
+        yield MenuItem::linkToCrud('Nombre modification maximum', 'fas fa-exchange-alt', NombreModificationMaximum::class);
+        yield MenuItem::linkToCrud('Nombre rendez-vous par heure', 'fas fa-stopwatch', NombreRendezVousParHeure::class);
+        yield MenuItem::linkToCrud('Nombre véhicule par rendez-vous', 'fas fa-car', NombreVehiculeMaximumRendezVous::class);
+        yield MenuItem::linkToCrud('Ouverture samedi', 'fas fa-door-open', OuvertureSamedi::class);
+        yield MenuItem::linkToCrud('Provinces', 'fas fa-city', Provinces::class);
+        yield MenuItem::linkToCrud('Rendez-vous', 'fas fa-business-time', RendezVous::class);
     }
-
-    /* public function configureCrud(Crud $crud): Crud
-    {
-        return $crud
-            ->setEntityLabelInSingular('Conference Comment')
-            ->setEntityLabelInPlural('Conference Comments')
-            ->setSearchFields(['author', 'text', 'email'])
-            ->setDefaultSort(['createdAt' => 'DESC'])
-        ;
-    }
-
-    public function configureFilters(Filters $filters): Filters
-    {
-        return $filters
-            ->add(EntityFilter::new('conference'))
-        ;
-    }
-
-    public function configureFields(string $pageName): iterable
-    {
-        yield AssociationField::new('conference');
-        yield TextField::new('author');
-        yield EmailField::new('email');
-        yield TextareaField::new('text')
-            ->hideOnIndex()
-        ;
-        yield TextField::new('photoFilename')
-            ->onlyOnIndex()
-        ;
-
-        $createdAt = DateTimeField::new('createdAt')->setFormTypeOptions([
-            'years' => range(date('Y'), date('Y') + 5),
-            'widget' => 'single_text',
-        ]);
-        if (Crud::PAGE_EDIT === $pageName) {
-            yield $createdAt->setFormTypeOption('disabled', true);
-        } else {
-            yield $createdAt;
-        }
-    } */
 }

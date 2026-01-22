@@ -36,12 +36,12 @@ class Provinces
 
     public function getProvince(): ?string
     {
-        return $this->province;
+        return strtoupper($this->province);
     }
 
     public function setProvince(string $province): static
     {
-        $this->province = $province;
+        $this->province = strtoupper($province);
 
         return $this;
     }
@@ -82,6 +82,6 @@ class Provinces
     */
     public function __toString(): string
     {
-        return $this->getProvince();
+        return strtoupper($this->getProvince());
     }
 }

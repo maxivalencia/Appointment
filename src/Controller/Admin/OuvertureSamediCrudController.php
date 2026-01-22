@@ -42,6 +42,7 @@ class OuvertureSamediCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Ouvertures samedi')
             ->setSearchFields(['id', 'dateDebut', 'dateFin', 'heureDebut', 'heureFin'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

@@ -42,6 +42,7 @@ class NombreModificationMaximumCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Nombres des modifications maximum par rendez-vous')
             ->setSearchFields(['id', 'nombreModification', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

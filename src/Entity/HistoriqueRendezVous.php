@@ -37,12 +37,12 @@ class HistoriqueRendezVous
 
     public function getRendezVous(): ?string
     {
-        return $this->rendezVous;
+        return strtoupper($this->rendezVous);
     }
 
     public function setRendezVous(?string $rendezVous): static
     {
-        $this->rendezVous = $rendezVous;
+        $this->rendezVous = strtoupper($rendezVous);
 
         return $this;
     }
@@ -83,6 +83,6 @@ class HistoriqueRendezVous
     */
     public function __toString(): string
     {
-        return $this->getRendezVous();
+        return strtoupper($this->getRendezVous());
     }
 }

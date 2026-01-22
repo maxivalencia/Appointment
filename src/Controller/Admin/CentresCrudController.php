@@ -42,6 +42,7 @@ class CentresCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Centres')
             ->setSearchFields(['id', 'centre', 'code', 'province'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

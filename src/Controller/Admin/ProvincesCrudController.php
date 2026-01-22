@@ -42,6 +42,7 @@ class ProvincesCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Provinces')
             ->setSearchFields(['id', 'province'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

@@ -55,6 +55,6 @@ class DureeLimiteAvantRendezVous
     */
     public function __toString(): string
     {
-        return $this->getNombreHeure()->format('d/m/Y H:i:s');
+        return strtoupper($this->getNombreHeure()->format('d/m/Y H:i:s'));
     }
 }

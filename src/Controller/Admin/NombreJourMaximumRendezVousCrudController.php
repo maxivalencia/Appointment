@@ -42,6 +42,7 @@ class NombreJourMaximumRendezVousCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Nombres des jours maximums avant rendez-vous')
             ->setSearchFields(['id', 'nombreJour', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

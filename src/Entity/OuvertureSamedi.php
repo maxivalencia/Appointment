@@ -100,6 +100,6 @@ class OuvertureSamedi
     */
     public function __toString(): string
     {
-        return $this->getDateDebut().' au '.$this->getDateFin().' de '.$this->getHeureDebut().' à '.$this->getHeureFin();
+        return strtoupper($this->getDateDebut().' au '.$this->getDateFin().' de '.$this->getHeureDebut().' à '.$this->getHeureFin());
     }
 }

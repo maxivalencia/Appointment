@@ -42,6 +42,7 @@ class JourSpecialeCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Jours spécials')
             ->setSearchFields(['id', 'dateSpeciale', 'ouvrable', 'heureDebut', 'heureFin'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

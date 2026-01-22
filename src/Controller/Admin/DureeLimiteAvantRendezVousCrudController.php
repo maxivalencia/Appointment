@@ -42,6 +42,7 @@ class DureeLimiteAvantRendezVousCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Durées limites avant rendez-vous')
             ->setSearchFields(['id', 'nombreHeure', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 

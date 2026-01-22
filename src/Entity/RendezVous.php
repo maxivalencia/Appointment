@@ -81,12 +81,12 @@ class RendezVous
 
     public function getImmatriculation(): ?string
     {
-        return $this->immatriculation;
+        return strtoupper($this->immatriculation);
     }
 
     public function setImmatriculation(?string $immatriculation): static
     {
-        $this->immatriculation = $immatriculation;
+        $this->immatriculation = strtoupper($immatriculation);
 
         return $this;
     }
@@ -105,12 +105,12 @@ class RendezVous
 
     public function getContact(): ?string
     {
-        return $this->contact;
+        return strtoupper($this->contact);
     }
 
     public function setContact(?string $contact): static
     {
-        $this->contact = $contact;
+        $this->contact = strtoupper($contact);
 
         return $this;
     }
@@ -249,12 +249,12 @@ class RendezVous
 
     public function getCodeRendezVous(): ?string
     {
-        return $this->codeRendezVous;
+        return strtoupper($this->codeRendezVous);
     }
 
     public function setCodeRendezVous(?string $codeRendezVous): static
     {
-        $this->codeRendezVous = $codeRendezVous;
+        $this->codeRendezVous = strtoupper($codeRendezVous);
 
         return $this;
     }
@@ -325,6 +325,6 @@ class RendezVous
     */
     public function __toString(): string
     {
-        return $this->getImmatriculation();
+        return strtoupper($this->getImmatriculation());
     }
 }

@@ -55,6 +55,6 @@ class NombreVehiculeMaximumRendezVous
     */
     public function __toString(): string
     {
-        return $this->getNombreVehicule();
+        return strtoupper($this->getNombreVehicule());
     }
 }

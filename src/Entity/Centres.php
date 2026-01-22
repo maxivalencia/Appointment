@@ -42,24 +42,24 @@ class Centres
 
     public function getCentre(): ?string
     {
-        return $this->centre;
+        return strtoupper($this->centre);
     }
 
     public function setCentre(?string $centre): static
     {
-        $this->centre = $centre;
+        $this->centre = strtoupper($centre);
 
         return $this;
     }
 
     public function getCode(): ?string
     {
-        return $this->code;
+        return strtoupper($this->code);
     }
 
     public function setCode(?string $code): static
     {
-        $this->code = $code;
+        $this->code = strtoupper($code);
 
         return $this;
     }
@@ -112,6 +112,6 @@ class Centres
     */
     public function __toString(): string
     {
-        return $this->getCentre();
+        return strtoupper($this->getCentre());
     }
 }
