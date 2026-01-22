@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class OuvertureSamediCrudController extends AbstractCrudController
 {
@@ -46,7 +48,11 @@ class OuvertureSamediCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('OuvertureSamedi'))
+            // ->add(EntityFilter::new('OuvertureSamedi'))
+            ->add(DateTimeFilter::new('dateDebut'))
+            ->add(DateTimeFilter::new('dateFin'))
+            ->add(DateTimeFilter::new('heureDebut'))
+            ->add(DateTimeFilter::new('heureFin'))
         ;
     }
 
@@ -54,8 +60,10 @@ class OuvertureSamediCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            DateField::new('dateDebut'),
+            DateField::new('dateFin'),
+            TimeField::new('heureDebut'),
+            TimeField::new('heureFin'),
         ];
     }
 

@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class JourSpecialeCrudController extends AbstractCrudController
 {

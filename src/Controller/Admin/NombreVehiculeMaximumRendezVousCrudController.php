@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class NombreVehiculeMaximumRendezVousCrudController extends AbstractCrudController
 {
@@ -46,7 +48,9 @@ class NombreVehiculeMaximumRendezVousCrudController extends AbstractCrudControll
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('NombreVehiculeMaximumRendezVous'))
+            // ->add(EntityFilter::new('NombreVehiculeMaximumRendezVous'))
+            ->add(NumericFilter::new('nombreVehicule'))
+            ->add(DateTimeFilter::new('dateApplication'))
         ;
     }
 
@@ -54,8 +58,8 @@ class NombreVehiculeMaximumRendezVousCrudController extends AbstractCrudControll
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IntegerField::new('nombreVehicule'),
+            DateField::new('dateApplication'),
         ];
     }
 

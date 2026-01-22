@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class NombreRendezVousParHeureCrudController extends AbstractCrudController
 {
@@ -46,7 +48,9 @@ class NombreRendezVousParHeureCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('NombreRendezVousParHeure'))
+            // ->add(EntityFilter::new('NombreRendezVousParHeure'))
+            ->add(NumericFilter::new('nombreRendezVous'))
+            ->add(DateTimeFilter::new('dataApplication'))
         ;
     }
 
@@ -54,8 +58,8 @@ class NombreRendezVousParHeureCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IntegerField::new('nombreRendezVous'),
+            DateField::new('dataApplication'),
         ];
     }
 

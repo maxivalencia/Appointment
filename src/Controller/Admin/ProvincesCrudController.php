@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class ProvincesCrudController extends AbstractCrudController
 {
@@ -46,7 +48,8 @@ class ProvincesCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('Provinces'))
+            // ->add(EntityFilter::new('Provinces'))
+            ->add(TextFilter::new('province'))
         ;
     }
 
@@ -54,8 +57,7 @@ class ProvincesCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('province'),
         ];
     }
 

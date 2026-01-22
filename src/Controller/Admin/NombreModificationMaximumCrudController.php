@@ -24,7 +24,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class NombreModificationMaximumCrudController extends AbstractCrudController
 {
@@ -46,7 +48,9 @@ class NombreModificationMaximumCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('NombreModificationMaximum'))
+            // ->add(EntityFilter::new('NombreModificationMaximum'))
+            ->add(NumericFilter::new('nombreModification'))
+            ->add(DateTimeFilter::new('dateApplication'))
         ;
     }
 
@@ -54,8 +58,8 @@ class NombreModificationMaximumCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IntegerField::new('nombreModification'),
+            DateField::new('dateApplication'),
         ];
     }
 
