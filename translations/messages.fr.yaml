@@ -6,7 +6,7 @@ Veuillez ajouter içi un numéro d'immatriculation malagasy uniquement:	Veuillez
 Veuillez saisir votre nom et prénom:	Veuillez saisir votre nom et prénom
 Veuillez ajouter içi votre nom et votre prénom:	Veuillez ajouter içi votre nom et votre prénom
 Veuillez saisir numéro de téléphone:	Veuillez saisir numéro de téléphone
-e.g., +261 (0) 3X XX XXX XX:	e.g., +261 (0) 3X XX XXX XX
+e.g., +261 (0) 3X XX XXX XX:	exemple, +261 (0) 3X XX XXX XX
 Veuillez saisir votre e-mail:	Veuillez saisir votre e-mail
 e.g., exemple@exemple.mg:	e.g., exemple@exemple.mg
 Veuillez saisir votre adresse:	Veuillez saisir votre adresse
@@ -16,3 +16,44 @@ Heure de rendez-vous:	Heure de rendez-vous
 Veuillez confirmer votre rendez-vous:	Veuillez confirmer votre rendez-vous
 Je serais au rendez-vous:	Je serais au rendez-vous
 Je ne serais pas au rendez-vous:	Je ne serais pas au rendez-vous
+Centre: Centre
+Centres: Centres
+Durée limite avant rendez-vous: Durée limite avant rendez-vous
+Historiques des rendez-vous: Historiques des rendez-vous
+Jours spéciale: Jours spéciale
+Nombre jour maximum: Nombre jour maximum
+Nombre modification maximum: Nombre modification maximum
+Nombre rendez-vous par heure: Nombre rendez-vous par heure
+Nombre véhicule par rendez-vous: Nombre véhicule par rendez-vous
+Ouverture samedi: Ouverture samedi
+Provinces: Provinces
+Rendez-vous: Rendez-vous
+ID: ID
+Code: Code
+Province: Province
+Durées limites avant rendez-vous: Durées limites avant rendez-vous
+Nombre Heure: Nombre d'Heure
+Date Application: Date d'Application
+Historique de rendez-vous: Historique de rendez-vous
+Jour spécial: Jour spécial
+Jours spécials: Jours spécials
+Nombre de jour maximum avant rendez-vous: Nombre de jour maximum avant rendez-vous
+Nombres des jours maximums avant rendez-vous: Nombres des jours maximums avant rendez-vous
+Nombre Jour: Nombre de Jour
+Nombre de modification maximum par rendez-vous: Nombre de modification maximum par rendez-vous
+Nombres des modifications maximum par rendez-vous: Nombres des modifications maximum par rendez-vous
+Nombre Modification: Nombre de Modification
+Nombre de rendez-vous par heure: Nombre de rendez-vous par heure
+Nombres des rendez-vous par heure: Nombres des rendez-vous par heure
+Nombre Rendez Vous: Nombre de Rendez-Vous
+Data Application: Date d'Application
+Nombre de véhicule maximum par rendez-vous: Nombre de véhicule maximum par rendez-vous
+Nombres des véhicules maximums par rendez-vous: Nombres des véhicules maximums par rendez-vous
+Nombre Vehicule: Nombre de Véhicule
+Ouvertures samedi: Ouvertures samedi
+Immatriculation: Immatriculation
+Proprietaire: Propriétaire
+Contact: Contact
+Mail: Email
+Adresse: Adresse
+Date Prise Rendez Vous: Date de Prise de Rendez-Vous

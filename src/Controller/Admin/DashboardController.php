@@ -34,14 +34,20 @@ use Symfony\Component\Routing\Annotation\Route;
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+    /* public function __construct(
+        private readonly AdminUrlGeneratorInterface $adminUrlGenerator
+    )
+    {
+    } */
+
     #[Route(name: 'admin_index')]
     public function index(): Response
     {
-        return parent::index();
-        /* $routeBuilder = $this->container->get(AdminUrlGenerator::class);
-        $url = $routeBuilder->setController(ConferenceCrudController::class)->generateUrl();
+        /* return parent::index(); */
+        $routeBuilder = $this->container->get(AdminUrlGenerator::class);
+        $url = $routeBuilder->setController(CentresCrudController::class)->generateUrl();
 
-        return $this->redirect($url); */
+        return $this->redirect($url);
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
