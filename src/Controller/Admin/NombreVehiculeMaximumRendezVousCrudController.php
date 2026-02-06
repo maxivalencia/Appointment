@@ -43,6 +43,10 @@ class NombreVehiculeMaximumRendezVousCrudController extends AbstractCrudControll
             ->setSearchFields(['id', 'nombreVehicule', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des nombres de véhicule maximum')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un nombre de véhicule maximum')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un nombre de véhicule maximum')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du nombre de véhicule maximum');
         ;
     }
 

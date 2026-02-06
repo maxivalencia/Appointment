@@ -43,6 +43,10 @@ class NombreModificationMaximumCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'nombreModification', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des nombres de modification maximum')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un nombre de modification maximum')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un nombre de modification maximum')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du nombre de modification maximum');
         ;
     }
 

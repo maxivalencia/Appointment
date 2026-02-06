@@ -43,6 +43,10 @@ class JourSpecialeCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'dateSpeciale', 'ouvrable', 'heureDebut', 'heureFin'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des jours spécials')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un jour spécial')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un jour spécial')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du jour spécial');
         ;
     }
 

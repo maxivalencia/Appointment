@@ -65,6 +65,10 @@ class RendezVousCrudController extends AbstractCrudController
             ])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des rendez-vous')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un rendez-vous')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un rendez-vous')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du rendez-vous');
         ;
     }
 

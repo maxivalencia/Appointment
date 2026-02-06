@@ -43,6 +43,10 @@ class CentresCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'centre', 'code', 'province'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des centres')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un centre')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un centre')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du centre');
         ;
     }
 

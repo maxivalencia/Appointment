@@ -43,6 +43,10 @@ class NombreRendezVousParHeureCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'nombreRendezVous', 'dataApplication'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des nombres de rendez-vous par heure')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un nombre de rendez-vous par heure')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un nombre de rendez-vous par heure')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du nombre de rendez-vous par heure');
         ;
     }
 

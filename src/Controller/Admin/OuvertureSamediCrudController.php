@@ -43,6 +43,10 @@ class OuvertureSamediCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'dateDebut', 'dateFin', 'heureDebut', 'heureFin'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des ouvertures samedi')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un ouverture samedi')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un ouverture samedi')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du ouverture samedi');
         ;
     }
 

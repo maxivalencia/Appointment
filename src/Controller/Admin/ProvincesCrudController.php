@@ -43,6 +43,10 @@ class ProvincesCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'province'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des provinces')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un province')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un province')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du province');
         ;
     }
 

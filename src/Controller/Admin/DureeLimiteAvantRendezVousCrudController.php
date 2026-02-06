@@ -43,6 +43,10 @@ class DureeLimiteAvantRendezVousCrudController extends AbstractCrudController
             ->setSearchFields(['id', 'nombreHeure', 'dateApplication'])
             ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(20)
+            ->setPageTitle(Crud::PAGE_INDEX, 'Appointment - Liste des durées Limite Avant rendez-vous')
+            ->setPageTitle(Crud::PAGE_NEW, 'Appointment - Ajouter un durée Limite Avant rendez-vous')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Appointment - Modifier un durée Limite Avant rendez-vous')
+            ->setPageTitle(Crud::PAGE_DETAIL, 'Appointment - Détails du durée Limite Avant rendez-vous');
         ;
     }
 
